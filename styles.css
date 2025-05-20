@@ -15,6 +15,7 @@ body{
   height: 100vh;
   z-index: -1;
   background-repeat: no-repeat;
+  background-size:cover;
   background-position: center;
   opacity: 50%;
   background-image: url("/img/fondo.jpg");
