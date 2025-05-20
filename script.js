@@ -51,9 +51,26 @@ const catedralDeLugo = crearPuntosInteres("Catedral de Lugo", 43.009572, -7.5577
 const domusLugo = crearPuntosInteres("A Domus do Mitreo", 43.009153, -7.559114, "Historico");
 const parqueRosalia = crearPuntosInteres("Parque de Rosalía de Castro", 43.006067, -7.559653, "Interes");
 
+//Paris
+const torreEiffel = crearPuntosInteres("Torre Eiffel",48.858253, 2.294474, "Interes");
+const louvre = crearPuntosInteres("Museo del Louvre", 48.860552, 2.337720, "Cultural");
+const notreDame= crearPuntosInteres("Catedral de Notre Dame", 48.852959, 2.350050, "Religioso");
+const arcoDelTriunfo = crearPuntosInteres("Arco del Triunfo", 48.873797, 2.294984, "Historico");
+const sagradoCorazon = crearPuntosInteres("Basílica del Sagrado Corazón", 48.886782, 2.343003, "Religioso");
+
+//Nueva York
+const centralPark = crearPuntosInteres("Central Park", 48.8561, 2.3476, "Interes");
+const estatuaLibertar = crearPuntosInteres("Estatua de la Libertad", 40.689248, -74.044518, "Interes");
+const puenteDeBrooklyn = crearPuntosInteres("Puente de Brooklyn", 40.708082, -73.999215, "Interes");
+const empireState = crearPuntosInteres("Empire State Building", 40.748338, -73.985442, "Interes");
+const moma = crearPuntosInteres("Museo de Arte Moderno", 40.761610, -73.977489, "Cultural")
+
 
 
 //CREACCIÓN DE CIUDADES
 const roma = crearCiudad("Roma",-29.44781,27.71233,[coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
 const zamora = crearCiudad("Zamora", 41.50633, -5.74628, [catedral, puenteDePiedra, plazaMayorZamora, murallaZamora, plazaViriato]);
 const lugo = crearCiudad("Lugo", 43.01174, -7.55610, [murallaLugo, plazaMayorLugo, catedralDeLugo, domusLugo, parqueRosalia]);
+const paris = crearCiudad("París", 48.8561, 2.3476, [torreEiffel, louvre, notreDame, arcoDelTriunfo, sagradoCorazon]);
+const nuevaYork = crearCiudad ("Nueva York", 40.739, -73.957, [centralPark, estatuaLibertar, puenteDeBrooklyn, empireState, moma]);
+arrayCiudades.push(roma, zamora, lugo, paris, nuevaYork);
