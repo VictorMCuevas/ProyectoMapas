@@ -1,1 +1,72 @@
-#map { height: 180px; }
+h1{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Amarante", serif;
+    font-size: 60px;
+}
+body{
+    background-color: black; 
+}
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 50%;
+  background-image: url("/img/fondo.jpg");
+
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    size: 20px;
+     font-family: "Amarante", serif;
+     font-size: 20px;
+}
+select {
+  background-color: #413f3f; 
+  color: #f5f5f5; 
+  font-family: "Amarante", serif;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: 0.3s ease;
+}
+
+select:hover {
+  border-color: #fff;
+  background-color: #3b3b3b;
+}
+
+select:focus {
+  outline: none;
+  border-color: rgb(189, 175, 97);
+  box-shadow: 0 0 10px rgb(189, 175, 97);;
+}
+
+#map { 
+    width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: rgb(98, 97, 97);
+  border-style: inset;
+  border-width: 10px;
+  margin-top: 2%;
+ }

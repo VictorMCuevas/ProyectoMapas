@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Maps grupo D</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -13,6 +17,24 @@
      crossorigin=""></script>
 </head>
 <body>
+    <header>
+        <h1>MAPS</h1>
+    </header>
+    <div id="background"></div>
+    <table id="form">
+         <tr>
+            <th>Escoge una ciudad:</th>
+            <td>
+                <select id="ciudad" class="custom-select">
+                    <option value="roma" selected >Roma</option>
+                    <option value=""></option>
+                    <option value=""></option>
+    
+                </select>
+            </td>
+        </tr>
+
+    </table>
     <div id="map"></div>
     <script src="script.js"></script>
 </body>
