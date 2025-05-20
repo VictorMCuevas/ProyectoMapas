@@ -1,35 +1,9 @@
-var map = L.map('map').setView([51.505, -0.09], 13);
-
-
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&#x2184; <a href="http://www.openstreetmap.org/copyright">GRUPO D</a>'
-}).addTo(map);
-
-
-
 const arrayCiudades = []
 
-function crearCiudad(nombre, latitud, longitud,puntosInteres) {
-    return {
-      nombre,
-      latitud,
-      longitud,
-      puntosInteres
-    };
-}
 
-function crearPuntosInteres(nombre, latitud, longitud, categoria){
-    return{
-        nombre,
-        latitud,
-        longitud,
-        categoria
-    }
-}
+const selectCiudad = document.getElementById("ciudad");
 
-
+var mapa;
 //DATOS DE PUNTOS DE INTERÉS
 //Roma
 let coliseo = crearPuntosInteres("Coliseo", 41.890274, 12.492238, "Historico");
@@ -68,9 +42,87 @@ const moma = crearPuntosInteres("Museo de Arte Moderno", 40.761610, -73.977489, 
 
 
 //CREACCIÓN DE CIUDADES
-const roma = crearCiudad("Roma",-29.44781,27.71233,[coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
+const roma = crearCiudad("Roma",41.8997, 12.4880,[coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
 const zamora = crearCiudad("Zamora", 41.50633, -5.74628, [catedral, puenteDePiedra, plazaMayorZamora, murallaZamora, plazaViriato]);
 const lugo = crearCiudad("Lugo", 43.01174, -7.55610, [murallaLugo, plazaMayorLugo, catedralDeLugo, domusLugo, parqueRosalia]);
 const paris = crearCiudad("París", 48.8561, 2.3476, [torreEiffel, louvre, notreDame, arcoDelTriunfo, sagradoCorazon]);
 const nuevaYork = crearCiudad ("Nueva York", 40.739, -73.957, [centralPark, estatuaLibertar, puenteDeBrooklyn, empireState, moma]);
+
+
 arrayCiudades.push(roma, zamora, lugo, paris, nuevaYork);
+
+
+mapa = L.map('map').setView([roma.latitud, roma.longitud], 10);
+
+mostrarMapa();
+
+
+function mostrarMapa(){
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&#x2184; <a href="http://www.openstreetmap.org/copyright">GRUPO D</a>'
+    }).addTo(mapa);   
+}
+
+
+
+selectCiudad.addEventListener('change', () => {
+
+    var ciudad = this.ciudad[this.value];
+
+    console.log("")
+
+    seleccionarCiudad(ciudad);
+});
+
+
+function seleccionarCiudad (ciudad){
+
+    switch (ciudad){
+        case "roma":
+            mapa = L.map('map').setView([roma.latitud, roma.longitud], 10);
+            mostrarMapa();
+            console.log("roma")
+            break;
+        case "zamora":
+            mapa = L.map('map').setView([zamora.latitud, zamora.longitud], 10);
+            mostrarMapa();
+            console.log("zamora")
+            break;
+        case "lugo":
+            mapa = L.map('map').setView([lugo.latitud, lugo.longitud], 10);
+            console.log("lugo")
+            break;
+        case "paris":
+            mapa = L.map('map').setView([paris.latitud, paris.longitud], 10);
+            console.log("paris")
+            break;
+        case "Nueva York":
+            mapa = L.map('map').setView([nuevaYork.latitud, nuevaYork.longitud], 10);
+            console.log("nueva york")
+            break;
+
+            
+    }
+}
+
+
+function crearCiudad(nombre, latitud, longitud,puntosInteres) {
+    return {
+      nombre,
+      latitud,
+      longitud,
+      puntosInteres
+    };
+}
+
+function crearPuntosInteres(nombre, latitud, longitud, categoria){
+    return{
+        nombre,
+        latitud,
+        longitud,
+        categoria
+    }
+}
+
+
