@@ -3,7 +3,7 @@ const arrayCiudades = []
 
 const selectCiudad = document.getElementById("ciudad");
 
-var mapa;
+let mapa, ciudad ="";
 //DATOS DE PUNTOS DE INTERÉS
 //Roma
 let coliseo = crearPuntosInteres("Coliseo", 41.890274, 12.492238, "Historico");
@@ -26,9 +26,9 @@ const domusLugo = crearPuntosInteres("A Domus do Mitreo", 43.009153, -7.559114, 
 const parqueRosalia = crearPuntosInteres("Parque de Rosalía de Castro", 43.006067, -7.559653, "Interes");
 
 //Paris
-const torreEiffel = crearPuntosInteres("Torre Eiffel",48.858253, 2.294474, "Interes");
+const torreEiffel = crearPuntosInteres("Torre Eiffel", 48.858253, 2.294474, "Interes");
 const louvre = crearPuntosInteres("Museo del Louvre", 48.860552, 2.337720, "Cultural");
-const notreDame= crearPuntosInteres("Catedral de Notre Dame", 48.852959, 2.350050, "Religioso");
+const notreDame = crearPuntosInteres("Catedral de Notre Dame", 48.852959, 2.350050, "Religioso");
 const arcoDelTriunfo = crearPuntosInteres("Arco del Triunfo", 48.873797, 2.294984, "Historico");
 const sagradoCorazon = crearPuntosInteres("Basílica del Sagrado Corazón", 48.886782, 2.343003, "Religioso");
 
@@ -42,11 +42,11 @@ const moma = crearPuntosInteres("Museo de Arte Moderno", 40.761610, -73.977489, 
 
 
 //CREACCIÓN DE CIUDADES
-const roma = crearCiudad("Roma",41.8997, 12.4880,[coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
+const roma = crearCiudad("Roma", 41.8997, 12.4880, [coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
 const zamora = crearCiudad("Zamora", 41.50633, -5.74628, [catedral, puenteDePiedra, plazaMayorZamora, murallaZamora, plazaViriato]);
 const lugo = crearCiudad("Lugo", 43.01174, -7.55610, [murallaLugo, plazaMayorLugo, catedralDeLugo, domusLugo, parqueRosalia]);
 const paris = crearCiudad("París", 48.8561, 2.3476, [torreEiffel, louvre, notreDame, arcoDelTriunfo, sagradoCorazon]);
-const nuevaYork = crearCiudad ("Nueva York", 40.739, -73.957, [centralPark, estatuaLibertar, puenteDeBrooklyn, empireState, moma]);
+const nuevaYork = crearCiudad("Nueva York", 40.739, -73.957, [centralPark, estatuaLibertar, puenteDeBrooklyn, empireState, moma]);
 
 
 arrayCiudades.push(roma, zamora, lugo, paris, nuevaYork);
@@ -57,28 +57,33 @@ mapa = L.map('map').setView([roma.latitud, roma.longitud], 10);
 mostrarMapa();
 
 
-function mostrarMapa(){
+
+function mostrarMapa() {
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&#x2184; <a href="http://www.openstreetmap.org/copyright">GRUPO D</a>'
-    }).addTo(mapa);   
+    }).addTo(mapa);
 }
 
 
-
+console.log("Antes de listener")
 selectCiudad.addEventListener('change', () => {
 
-    var ciudad = this.ciudad[this.value];
+    ciudad = selectCiudad.value;
 
-    console.log("")
+    console.log("Hola");
 
     seleccionarCiudad(ciudad);
+    console.log("Adios")
 });
 
 
-function seleccionarCiudad (ciudad){
+function seleccionarCiudad(ciudad) {
 
-    switch (ciudad){
+    console.log("Estoy en la funcion")
+
+   
+    switch (ciudad) {
         case "roma":
             mapa = L.map('map').setView([roma.latitud, roma.longitud], 10);
             mostrarMapa();
@@ -97,27 +102,29 @@ function seleccionarCiudad (ciudad){
             mapa = L.map('map').setView([paris.latitud, paris.longitud], 10);
             console.log("paris")
             break;
-        case "Nueva York":
+        case "nueva york":
             mapa = L.map('map').setView([nuevaYork.latitud, nuevaYork.longitud], 10);
             console.log("nueva york")
             break;
+        default:
+            console.log("Fallo")
+            break;
 
-            
     }
 }
 
 
-function crearCiudad(nombre, latitud, longitud,puntosInteres) {
+function crearCiudad(nombre, latitud, longitud, puntosInteres) {
     return {
-      nombre,
-      latitud,
-      longitud,
-      puntosInteres
+        nombre,
+        latitud,
+        longitud,
+        puntosInteres
     };
 }
 
-function crearPuntosInteres(nombre, latitud, longitud, categoria){
-    return{
+function crearPuntosInteres(nombre, latitud, longitud, categoria) {
+    return {
         nombre,
         latitud,
         longitud,
