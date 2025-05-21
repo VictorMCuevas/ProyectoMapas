@@ -83,5 +83,6 @@ select:focus , button:focus{
     margin-top: 27%;
  }
  #añadir{
+  margin-top: 2%;
   display: none;
  }

@@ -298,3 +298,16 @@ function crearPuntosInteres(nombre, latitudPunto, longitudPunto, categoria) {
 }
 
 
+/**
+ * boton para añadir direcciones personalizadas
+ */
+const aniadir= document.getElementById("boton1")
+aniadir.addEventListener("click", () => {
+    mostrarForm();
+});
+
+function mostrarForm(){
+    document.getElementById("añadir").style.display = "block";
+
+}
+
