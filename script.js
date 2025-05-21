@@ -310,7 +310,7 @@ function mostrarForm(){
 /**
  * boton para guardar el input 
  */
-const boton2= document.getElementById("boton2")
+const boton2= document.getElementById("buscar")
 boton2.addEventListener("click", () => {
     geocodificar();
     //mostrarSugerencias();
@@ -354,6 +354,7 @@ function geocodificar() {
         console.log(arrayDireccionesEncontradas.length);
             
         for( let i = 0; i<arrayDireccionesEncontradas.length;i++){
+            
             const opcion = document.createElement('option');
             opcion.setAttribute("value", i);
             let nod = document.createTextNode(arrayDireccionesEncontradas[i].display_name);  
