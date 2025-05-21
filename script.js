@@ -318,5 +318,33 @@ function mostrarForm(){
  */
 const boton2= document.getElementById("boton2")
 boton2.addEventListener("click", () => {
-    
+    geocodificar();
 });
+
+function geocodificar() {
+      const direccion = document.getElementById('dirPersonalizada').value;
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`;
+
+      fetch(url, {
+        headers: {
+          'User-Agent': 'Maps/1.0 (fvereszeltia@gmail.com)' // Requerido por Nominatim
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+          if (data.length > 0) {
+            const lat = data[0].lat;
+            const lon = data[0].lon;
+            document.getElementById('resultado').textContent = `Latitud: ${lat}, Longitud: ${lon}`;
+          } else {
+            document.getElementById('resultado').textContent = 'No se encontraron resultados.';
+          }
+        })
+        .catch(error => {
+          console.error('Error al geocodificar:', error);
+          document.getElementById('resultado').textContent = 'Error al buscar dirección.';
+        });
+        console.log(resultado.value)
+    }
+  
