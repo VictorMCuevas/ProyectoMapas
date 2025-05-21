@@ -313,6 +313,7 @@ function mostrarForm(){
 const boton2= document.getElementById("boton2")
 boton2.addEventListener("click", () => {
     geocodificar();
+    //mostrarSugerencias();
 });
 
 
@@ -330,21 +331,16 @@ function geocodificar() {
         .then(data => {
             console.log(data)
             arrayDireccionesEncontradas.length = 0; // Limpiar el array antes de agregar nuevos resultados
-            arrayDireccionesEncontradas.push(data);
+            arrayDireccionesEncontradas.push(...data);
+            mostrarSugerencias();
 
-          if (data.length > 0) {
-            const lat = data[0].lat;
-            const lon = data[0].lon;
-            document.getElementById('resultado').textContent = `Latitud: ${lat}, Longitud: ${lon}`;
-          } else {
-            document.getElementById('resultado').textContent = 'No se encontraron resultados.';
-          }
         })
         .catch(error => {
           console.error('Error al geocodificar:', error);
           document.getElementById('resultado').textContent = 'Error al buscar dirección.';
         });
-        console.log(resultado.value)
+
+        console.log("Hola")
     }
   
     /**
@@ -353,5 +349,18 @@ function geocodificar() {
     const sugerencias= document.getElementById("sugerencias");
 
     function mostrarSugerencias(){
+        console.log("a")
+        const nuevoElemento = null;
+        console.log(arrayDireccionesEncontradas.length);
+            
+        for( let i = 0; i<arrayDireccionesEncontradas.length;i++){
+            const opcion = document.createElement('option');
+            opcion.setAttribute("value", i);
+            let nod = document.createTextNode(arrayDireccionesEncontradas[i].display_name);  
+            opcion.appendChild(nod);
+           
 
+            document.getElementById('selector').appendChild(opcion);
+        }
+        
     }
