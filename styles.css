@@ -83,6 +83,17 @@ select:focus , button:focus{
     margin-top: 27%;
  }
  #añadir{
-  margin-top: 2%;
+  margin-top: 27%;
   display: none;
+  justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
  }
+#boton2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}

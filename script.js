@@ -224,19 +224,19 @@ function mostrarPuntosInteres(ciudad){
     }
     if(ciudad === 'lugo'){
         for(let i = 0 ; i < 5; i++){
-            let punto = roma.puntosInteres[i];
+            let punto = lugo.puntosInteres[i];
             agregarMarcador(punto.latitudPunto, punto.longitudPunto);
         }
     }
     if(ciudad === 'paris'){
         for(let i = 0 ; i < 5; i++){
-            let punto = roma.puntosInteres[i];
+            let punto = paris.puntosInteres[i];
             agregarMarcador(punto.latitudPunto, punto.longitudPunto);
         }
     }
     if(ciudad === 'nueva york'){
         for(let i = 0 ; i < 5; i++){
-            let punto = roma.puntosInteres[i];
+            let punto = nuevaYork.puntosInteres[i];
             agregarMarcador(punto.latitudPunto, punto.longitudPunto);
         }
     }
@@ -307,6 +307,7 @@ aniadir.addEventListener("click", () => {
 });
 
 function mostrarForm(){
+    document.getElementById("boton1").style.display= "none";
     document.getElementById("añadir").style.display = "block";
 
 }
