@@ -1,4 +1,14 @@
 # Proyecto3_D
+## SESION 1 (19/05/2025)
+**RESUMEN**
+Seguimimiento de tutorial de API de Google Maps.
+**DIFICULTADES**
+No funciona sin meter una tarjeta de crédito.
+**SOLUCIONES**
+Decidimos usar OpenStreetMap y Leaftlet
+**FUENTES CONSULTADAS**
+PDF de la práctica.
+
 ## SESION 2 (20/05/2025)
 **RESUMEN**
 Creación de hmtl, script y css. Primer diseño y primeras funcionalidades de la página.
@@ -17,3 +27,18 @@ https://leafletjs.com/examples.html
 Usar openStreetMap en vez de Google Maps, diseño.
 **IDEAS DE MEJORA**
 Cambiar mapa al seleccionar la ciudad, añadir los marcadores al mapa.
+
+## SESION 3 (21/05/2025)
+**RESUMEN**
+Añadir y mejorar funcionalidades y diseño. 
+**DIFICULTADES**
+Manejo de la API Nominatim.
+**SOLUCIONES**
+Busqueda en internet, ayuda de profesorado.
+**FUENTES CONSULTADAS**
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/search
+https://nominatim.org/release-docs/develop/develop/overview/
+https://www.hongkiat.com/blog/html5-datalist/
+**DECISIONES TÉCNICAS**
+
+**IDEAS DE MEJORA**

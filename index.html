@@ -26,7 +26,8 @@
             <th>Escoge una ciudad:</th>
             <td>
                 <select id="ciudad" class="custom-select">
-                    <option value="roma" selected >Roma</option>
+                    <option selected>Elija una ciudad</option>
+                    <option value="roma"  >Roma</option>
                     <option value="zamora">Zamora</option>
                     <option value="lugo">Lugo</option>
                     <option value="paris">París</option>
@@ -37,6 +38,37 @@
 
     </table>
     <div id="map"></div>
+    <div id="boton1">
+        <button>Añadir marcador personalizado</button>
+    </div>
+    <div id="añadir">
+        <table id="personalizado">
+            <tr>
+            <th>Escribe la dirección:</th>
+            <td>
+                <input type="search" id="dirPersonalizada" list="sugerencias">
+                <button id="buscar">Buscar</button>
+                <br>
+                <select id="selector"></select>
+                <!--<datalist id="sugerencias" >
+                    <option value="eeeeee"></option>
+                </datalist>-->
+            </td>
+            <th>Selecciona una categoría:</th>
+            <td>
+                <select id="categoriaPersonalizada">
+                    <option selected value="historico">Histórico</option>
+                    <option value="religioso">Religioso</option>
+                    <option value="cultural">Cultural</option>
+                    <option value="interes">Interés</option>
+                </select>
+            </td>
+            </tr>
+        </table>
+        <div id="boton2">
+            <button>Añadir</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
