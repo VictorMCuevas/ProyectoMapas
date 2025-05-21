@@ -347,3 +347,11 @@ function geocodificar() {
         console.log(resultado.value)
     }
   
+    /**
+     * mostrar array en sugernecias de busqueda
+     */
+    const sugerencias= document.getElementById("sugerencias");
+
+    function mostrarSugerencias(){
+
+    }
