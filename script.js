@@ -1,5 +1,5 @@
-const arrayCiudades = []
 
+const arrayDireccionesEncontradas = [];
 
 const selectCiudad = document.getElementById("ciudad");
 
@@ -110,12 +110,6 @@ const poligonoNuevaYork = [
         ]
     ]
 ];
-
-
-
-
-
-arrayCiudades.push(roma, zamora, lugo, paris, nuevaYork);
 
 
 mapa = L.map('map').setView([0, 0], 0);
@@ -321,6 +315,8 @@ boton2.addEventListener("click", () => {
     geocodificar();
 });
 
+
+
 function geocodificar() {
       const direccion = document.getElementById('dirPersonalizada').value;
       const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`;
@@ -333,6 +329,9 @@ function geocodificar() {
         .then(response => response.json())
         .then(data => {
             console.log(data)
+            arrayDireccionesEncontradas.length = 0; // Limpiar el array antes de agregar nuevos resultados
+            arrayDireccionesEncontradas.push(data);
+
           if (data.length > 0) {
             const lat = data[0].lat;
             const lon = data[0].lon;
