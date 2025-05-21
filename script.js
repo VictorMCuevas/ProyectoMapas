@@ -6,6 +6,7 @@ const selectCiudad = document.getElementById("ciudad");
 let mapa, ciudad ="";
 let marcadorActual = null;
 let poligono = null;
+
 //DATOS DE PUNTOS DE INTERÉS
 //Roma
 const coliseo = crearPuntosInteres("Coliseo", 41.890274, 12.492238, "Historico");
@@ -76,17 +77,11 @@ const poligonoZamora = [
     [41.48630, -5.73877],[41.48206, -5.75379],[41.48617, -5.75980]
 ]
 
-
-
-
-
-
 const poligonoLugo = [
     [43.03213, -7.57250],[43.03514, -7.55499],[43.03427, -7.54383],[43.03289, -7.53405],[43.02322, -7.52460]
     ,[43.02084, -7.52443],[43.00364, -7.52941],[42.99259, -7.53336],[42.98770, -7.54211],[42.99536, -7.56065]
     ,[43.00050, -7.56065],[43.00126, -7.56598],[43.00515, -7.57696],[43.01557, -7.58434],[43.02511, -7.58074]
 ]
-
 
 const poligonoParis= [
     [48.85342, 2.22422],[48.86596, 2.23074],[48.87296, 2.24293],[48.88030, 2.26027],[48.88346, 2.28344]
@@ -95,7 +90,6 @@ const poligonoParis= [
     ,[48.81432, 2.36361],[48.81512, 2.33597],[48.82540, 2.29357],[48.83422, 2.26233],[48.82574, 2.25151]
     ,[48.82676, 2.22782],[48.83229, 2.22610],[48.83806, 2.22267]
 ]
-
 
 const poligonoNuevaYork = [
     [
@@ -148,70 +142,122 @@ selectCiudad.addEventListener('change', () => {
 
 
 function seleccionarCiudad(ciudad) {
-
-    
-
-   
+ 
     switch (ciudad) {
         case "roma":
             //agregar que se muestre la opción puntos de interés
             mapa.setView([roma.latitud, roma.longitud], 11);
-            agregarMarcador(roma.latitud, roma.longitud);
+            //agregarMarcador(roma.latitud, roma.longitud);
             eliminarPoligono();
+            eliminarMarcador();
             agregarPoligono(poligonoRoma, 'green');
+            mostrarPuntosInteres(ciudad);
+            
             break;
         case "zamora":
             mapa.setView([zamora.latitud, zamora.longitud], 13);
-            agregarMarcador(zamora.latitud, zamora.longitud);
+            //agregarMarcador(zamora.latitud, zamora.longitud);
             eliminarPoligono();
+            eliminarMarcador();
             agregarPoligono(poligonoZamora, 'red');
+            mostrarPuntosInteres(ciudad);
             break;
         case "lugo":
             mapa.setView([lugo.latitud, lugo.longitud], 13);
-            agregarMarcador(lugo.latitud, lugo.longitud);
+           // agregarMarcador(lugo.latitud, lugo.longitud);
             eliminarPoligono();
+            eliminarMarcador();
             agregarPoligono(poligonoLugo, 'orange');
+            mostrarPuntosInteres(ciudad);
             break;
         case "paris":
             mapa.setView([paris.latitud, paris.longitud], 10);
-            agregarMarcador(paris.latitud, paris.longitud);
+           // agregarMarcador(paris.latitud, paris.longitud);
             eliminarPoligono();
+            eliminarMarcador();
             agregarPoligono(poligonoParis, 'blue');
+            mostrarPuntosInteres(ciudad);
             break;
         case "nueva york":
             mapa.setView([nuevaYork.latitud, nuevaYork.longitud], 10);
-            agregarMarcador(nuevaYork.latitud, nuevaYork.longitud);
+           // agregarMarcador(nuevaYork.latitud, nuevaYork.longitud);
             eliminarPoligono();
+            eliminarMarcador();
             agregarPoligono(poligonoNuevaYork, 'purple');
+            mostrarPuntosInteres(ciudad);
             break;
         default:
             mapa.setView([0, 0], 0);
             mapa.removeLayer(marcadorActual);
             eliminarPoligono();
+            eliminarMarcador();
             console.log("Fallo")
             break;
 
     }
 }
-
+//Elimina el poligono anterior
 function eliminarPoligono(){
     if(poligono != null){
         mapa.removeLayer(poligono);
     }
 }
+//Agrega los poligonos
 function agregarPoligono(poligonoCiudad, colorPoligono){
     poligono = L.polygon(poligonoCiudad, {color: colorPoligono}).addTo(mapa);
     mapa.fitBounds(poligono.getBounds());
 }
+
+function mostrarPuntosInteres(ciudad){
+   
+    if(ciudad === 'roma'){
+        for(let i = 0 ; i < 5; i++){
+            let punto = roma.puntosInteres[i];
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+        }
+    }
+    if(ciudad === 'zamora'){
+        for(let i = 0 ; i < 5; i++){
+            let punto = zamora.puntosInteres[i];
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+        }
+    }
+    if(ciudad === 'lugo'){
+        for(let i = 0 ; i < 5; i++){
+            let punto = roma.puntosInteres[i];
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+        }
+    }
+    if(ciudad === 'paris'){
+        for(let i = 0 ; i < 5; i++){
+            let punto = roma.puntosInteres[i];
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+        }
+    }
+    if(ciudad === 'nueva york'){
+        for(let i = 0 ; i < 5; i++){
+            let punto = roma.puntosInteres[i];
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+        }
+    }
+
+        
+    
+
+
+
+}
+
+
+function eliminarMarcador(){
+    if (marcadorActual) {
+        mapa.removeLayer(marcadorActual);
+    }}
 /**
  * Función que agrega un marcador al mapa, elimiando el anterior
  * */
 function agregarMarcador(latitud, longitud) {
-    // Si hay un marcador previo, eliminarlo del mapa
-    if (marcadorActual) {
-        mapa.removeLayer(marcadorActual);
-    }
-
+    
     // Crear y agregar el nuevo marcador
     marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
 }
@@ -242,11 +288,11 @@ function crearCiudad(nombre, latitud, longitud, puntosInteres) {
  * @param {*} categoria Categoría a la que pertenece le punto de interés (historico, religioso, interes...)
  * @returns Retorna array de objetos tipo punto de interés
  */
-function crearPuntosInteres(nombre, latitud, longitud, categoria) {
+function crearPuntosInteres(nombre, latitudPunto, longitudPunto, categoria) {
     return {
         nombre,
-        latitud,
-        longitud,
+        latitudPunto,
+        longitudPunto,
         categoria
     }
 }
