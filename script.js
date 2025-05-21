@@ -301,14 +301,22 @@ function crearPuntosInteres(nombre, latitudPunto, longitudPunto, categoria) {
 /**
  * boton para añadir direcciones personalizadas
  */
-const aniadir= document.getElementById("boton1")
-aniadir.addEventListener("click", () => {
+const boton1= document.getElementById("boton1")
+boton1.addEventListener("click", () => {
     mostrarForm();
 });
-
+/**
+ * funcion para mostrar el formulario paara añadir personalizacion
+ */
 function mostrarForm(){
     document.getElementById("boton1").style.display= "none";
     document.getElementById("añadir").style.display = "block";
 
 }
-
+/**
+ * boton para guardar el input 
+ */
+const boton2= document.getElementById("boton2")
+boton2.addEventListener("click", () => {
+    
+});
