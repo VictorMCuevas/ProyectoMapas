@@ -34,15 +34,32 @@
                     <option value="nueva york">Nueva York</option>
                 </select>
             </td>
-            <td>
-                <select id="puntInteres">
-                    <option selected>Elija un punto de interés</option>
-                </select>
-            </td>
         </tr>
 
     </table>
     <div id="map"></div>
+    <div id="boton1">
+        <button>Añadir marcador personalizado</button>
+    </div>
+    <div id="añadir">
+        <table id="personalizado">
+             <tr>
+            <th>Escribe la dirección:</th>
+            <td>
+                <input type="text" id="dirPersonalizada">
+            </td>
+            <th>Selecciona una categoría:</th>
+            <td>
+                <select id="categoriaPersonalizada">
+                    <option selected>Hisótorico</option>
+                    <option selected>Religioso</option>
+                    <option selected>Cultural</option>
+                    <option selected>Interés</option>
+                </select>
+            </td>
+        </tr>
+        </table>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
