@@ -106,7 +106,7 @@ select:focus , button:focus{
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
-   background-color: #413f3f; 
+   background-color: #615f5f; 
   color: #f5f5f5; 
   font-family: "Amarante", serif;
   font-size: 16px;
@@ -114,7 +114,7 @@ select:focus , button:focus{
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-right: 2px solid #777676;
+  border-right: 2px solid #8d8c8c;
 }
 .item {
       display: flex;
