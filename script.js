@@ -15,14 +15,29 @@ const coliseo = crearPuntosInteres("Coliseo", 41.890274, 12.492238, "Historico")
 const sanPedro = crearPuntosInteres("Basílica de San Pedro", 41.902321, 12.453625, "Religioso");
 const castilloSanAngelo = crearPuntosInteres("Castillo de San Angelo", 41.903076, 12.466331, "Historico");
 const panteonRoma = crearPuntosInteres("Panteón de Roma", 41.898602, 12.476837, "Religioso");
-const fontanaDiTrevi = crearPuntosInteres("Fontana di Trevi", 41.900967, 12.483274, "Interes")
+const fontanaDiTrevi = crearPuntosInteres("Fontana di Trevi", 41.900967, 12.483274, "Interes");
+
+const marcadoresRoma = L.layerGroup([
+    L.marker([coliseo.latitudPunto, coliseo.longitudPunto]).bindPopup(coliseo.nombre),
+    L.marker([sanPedro.latitudPunto, sanPedro.longitudPunto]).bindPopup(sanPedro.nombre),
+    L.marker([castilloSanAngelo.latitudPunto, castilloSanAngelo.longitudPunto]).bindPopup(castilloSanAngelo.nombre),
+    L.marker([panteonRoma.latitudPunto, panteonRoma.longitudPunto]).bindPopup(panteonRoma.nombre),
+    L.marker([fontanaDiTrevi.latitudPunto, fontanaDiTrevi.longitudPunto]).bindPopup(fontanaDiTrevi.nombre) 
+  ])
 //Zamora
 const catedral = crearPuntosInteres("Catedral", 41.499110, -5.754679, "Religioso");
 const puenteDePiedra = crearPuntosInteres("Puente de Piedra", 41.499419, -5.748105, "Historico");
 const plazaMayorZamora = crearPuntosInteres("Plaza Mayor de Zamora", 41.503530, -5.746697, "Interes");
-const murallaZamora = crearPuntosInteres("Muralla de Zamora", 41.500496, -5.756190, "Histórico")
-const plazaViriato = crearPuntosInteres("Plaza de Viriato", 41.502593, -5.748465, "Interes")
+const murallaZamora = crearPuntosInteres("Muralla de Zamora", 41.500496, -5.756190, "Histórico");
+const plazaViriato = crearPuntosInteres("Plaza de Viriato", 41.502593, -5.748465, "Interes");
 
+const marcadoresZamora = L.layerGroup([
+    L.marker([catedral.latitudPunto, catedral.longitudPunto]).bindPopup(catedral.nombre),
+    L.marker([puenteDePiedra.latitudPunto, puenteDePiedra.longitudPunto]).bindPopup(puenteDePiedra.nombre),
+    L.marker([plazaMayorZamora.latitudPunto, plazaMayorZamora.longitudPunto]).bindPopup(plazaMayorZamora.nombre),
+    L.marker([murallaZamora.latitudPunto, murallaZamora.longitudPunto]).bindPopup(murallaZamora.nombre),
+    L.marker([plazaViriato.latitudPunto, plazaViriato.longitudPunto]).bindPopup(plazaViriato.nombre) 
+  ])
 //Lugo
 const murallaLugo = crearPuntosInteres("Muralla de Lugo", 43.008798, -7.559396, "Historico");
 const plazaMayorLugo = crearPuntosInteres("Plaza Mayor de Lugo", 43.009700, -7.556671, "Interes");
@@ -30,6 +45,13 @@ const catedralDeLugo = crearPuntosInteres("Catedral de Lugo", 43.009572, -7.5577
 const domusLugo = crearPuntosInteres("A Domus do Mitreo", 43.009153, -7.559114, "Historico");
 const parqueRosalia = crearPuntosInteres("Parque de Rosalía de Castro", 43.006067, -7.559653, "Interes");
 
+const marcadoresLugo = L.layerGroup([
+    L.marker([murallaLugo.latitudPunto, murallaLugo.longitudPunto]).bindPopup(murallaLugo.nombre),
+    L.marker([plazaMayorLugo.latitudPunto, plazaMayorLugo.longitudPunto]).bindPopup(plazaMayorLugo.nombre),
+    L.marker([catedralDeLugo.latitudPunto, catedralDeLugo.longitudPunto]).bindPopup(catedralDeLugo.nombre),
+    L.marker([domusLugo.latitudPunto, domusLugo.longitudPunto]).bindPopup(domusLugo.nombre),
+    L.marker([parqueRosalia.latitudPunto, parqueRosalia.longitudPunto]).bindPopup(parqueRosalia.nombre) 
+  ])
 //Paris
 const torreEiffel = crearPuntosInteres("Torre Eiffel", 48.858253, 2.294474, "Interes");
 const louvre = crearPuntosInteres("Museo del Louvre", 48.860552, 2.337720, "Cultural");
@@ -37,13 +59,28 @@ const notreDame = crearPuntosInteres("Catedral de Notre Dame", 48.852959, 2.3500
 const arcoDelTriunfo = crearPuntosInteres("Arco del Triunfo", 48.873797, 2.294984, "Historico");
 const sagradoCorazon = crearPuntosInteres("Basílica del Sagrado Corazón", 48.886782, 2.343003, "Religioso");
 
+const marcadoresParis = L.layerGroup([
+    L.marker([torreEiffel.latitudPunto, torreEiffel.longitudPunto]).bindPopup(torreEiffel.nombre),
+    L.marker([louvre.latitudPunto, louvre.longitudPunto]).bindPopup(louvre.nombre),
+    L.marker([notreDame.latitudPunto, notreDame.longitudPunto]).bindPopup(notreDame.nombre),
+    L.marker([arcoDelTriunfo.latitudPunto, arcoDelTriunfo.longitudPunto]).bindPopup(arcoDelTriunfo.nombre),
+    L.marker([sagradoCorazon.latitudPunto, sagradoCorazon.longitudPunto]).bindPopup(sagradoCorazon.nombre) 
+  ])
 //Nueva York
 const centralPark = crearPuntosInteres("Central Park", 48.8561, 2.3476, "Interes");
 const estatuaLibertar = crearPuntosInteres("Estatua de la Libertad", 40.689248, -74.044518, "Interes");
 const puenteDeBrooklyn = crearPuntosInteres("Puente de Brooklyn", 40.708082, -73.999215, "Interes");
 const empireState = crearPuntosInteres("Empire State Building", 40.748338, -73.985442, "Interes");
-const moma = crearPuntosInteres("Museo de Arte Moderno", 40.761610, -73.977489, "Cultural")
+const moma = crearPuntosInteres("Museo de Arte Moderno", 40.761610, -73.977489, "Cultural");
 
+const marcadoresNuevaYork = L.layerGroup([
+    L.marker([centralPark.latitudPunto, centralPark.longitudPunto]).bindPopup(centralPark.nombre),
+    L.marker([estatuaLibertar.latitudPunto, estatuaLibertar.longitudPunto]).bindPopup(estatuaLibertar.nombre),
+    L.marker([puenteDeBrooklyn.latitudPunto, puenteDeBrooklyn.longitudPunto]).bindPopup(puenteDeBrooklyn.nombre),
+    L.marker([empireState.latitudPunto, empireState.longitudPunto]).bindPopup(empireState.nombre),
+    L.marker([moma.latitudPunto, moma.longitudPunto]).bindPopup(moma.nombre) 
+  ])
+  
 //CREACCIÓN DE CIUDADES
 const roma = crearCiudad("Roma", 41.8944, 12.5200, [coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
 const zamora = crearCiudad("Zamora", 41.50633, -5.74628, [catedral, puenteDePiedra, plazaMayorZamora, murallaZamora, plazaViriato]);
