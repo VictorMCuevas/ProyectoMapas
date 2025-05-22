@@ -491,9 +491,14 @@ function mostrarSugerencias() {
     }
 
     function guardarDireccionCategoria(){
-        let datosAGuardar = [arrayDireccionesEncontradas[posDirElegida]];
-        datosAGuardar[posDirElegida].categoria = categoriaElegida;
-
+        let datosAGuardar = {
+            nombre: arrayDireccionesEncontradas[posDirElegida].display_name,
+            latitud: arrayDireccionesEncontradas[posDirElegida].lat,
+            longitud: arrayDireccionesEncontradas[posDirElegida].lon,
+            categoria: categoriaElegida
+        };
     arrayDireccionesUsusario.push(datosAGuardar);
+
+    mapa.setView([arrayDireccionesUsusario[0].latitud, arrayDireccionesUsusario[0].longitud], 11);
 }
 
