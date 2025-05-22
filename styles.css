@@ -97,3 +97,40 @@ select:focus , button:focus{
     align-items: center;
     position: relative;
 }
+#leyenda{
+  height: 100%;
+  width: 200px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+   background-color: #413f3f; 
+  color: #f5f5f5; 
+  font-family: "Amarante", serif;
+  font-size: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 2px solid #777676;
+}
+.item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 3%;
+    }
+
+    .color-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .rojo { background-color: red; }
+    .verde { background-color: green; }
+    .azul { background-color: blue; }
+    .rosa{background-color: rgb(175, 83, 114);}

@@ -314,32 +314,29 @@ let categoria = punto.categoria.toLowerCase();
 
 var marcadorAzul = L.icon({
     iconUrl: './img/marcadorAzul.png',
-   
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
 });
 var marcadorVerde = L.icon({
     iconUrl: './img/marcadorVerde.png',
-   
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
 });
 var marcadorRojo = L.icon({
     iconUrl: './img/marcadorRojo.png',
-   
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
 });
 var marcadorRosa = L.icon({
     iconUrl: './img/marcadorRosa.png',
-   
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
 });
+
 
 /**
  * Función que crea objetos tipo ciudad
