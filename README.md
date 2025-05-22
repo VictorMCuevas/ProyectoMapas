@@ -45,13 +45,13 @@ https://www.hongkiat.com/blog/html5-datalist/
 
 ## SESION 4 (22/05/2025)
 **RESUMEN**
-
+Continuar con el trabajo de la sesión anterior, planear la siguiente.
 **DIFICULTADES**
-
+Guardar los datos de las direcciones personalizadas.
 **SOLUCIONES**
-
+Consulta en internet, puesta en común.
 **FUENTES CONSULTADAS**
-
+StackOverflow
 **DECISIONES TÉCNICAS**
 
 **IDEAS DE MEJORA**
