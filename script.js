@@ -1,5 +1,6 @@
 
 const arrayDireccionesEncontradas = [];
+const arrayDireccionesUsusario = [];
 
 const arrayCiudades = [];
 
@@ -67,7 +68,7 @@ const marcadoresParis = L.layerGroup([
     L.marker([sagradoCorazon.latitudPunto, sagradoCorazon.longitudPunto]).bindPopup(sagradoCorazon.nombre) 
   ])
 //Nueva York
-const centralPark = crearPuntosInteres("Central Park", 48.8561, 2.3476, "Interes");
+const centralPark = crearPuntosInteres("Central Park", 40.78394, -73.96569, "Interes");
 const estatuaLibertar = crearPuntosInteres("Estatua de la Libertad", 40.689248, -74.044518, "Interes");
 const puenteDeBrooklyn = crearPuntosInteres("Puente de Brooklyn", 40.708082, -73.999215, "Interes");
 const empireState = crearPuntosInteres("Empire State Building", 40.748338, -73.985442, "Interes");
@@ -397,7 +398,6 @@ const sugerencias = document.getElementById("sugerencias");
 const dirAgregada = null;
 
 function mostrarSugerencias() {
-    console.log("a")
 
     const nuevoElemento = null;
     console.log(arrayDireccionesEncontradas.length);
@@ -436,6 +436,7 @@ function mostrarSugerencias() {
         const posDirElegida = event.target.value;
         const textoSeleccionado = event.target.options[event.target.selectedIndex].text;
 
+        arrayDireccionesUsusario.push(arrayDireccionesEncontradas[posDirElegida]);
         console.log("Valor seleccionado:", posDirElegida);
         console.log("Texto seleccionado:", textoSeleccionado);
     });
