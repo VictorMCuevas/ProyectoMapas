@@ -471,13 +471,29 @@ function mostrarSugerencias() {
     }
     //Recoge el valor de la opción elegida en el desplegable de direcciones.
     select.addEventListener("change", function (event) {
-        const posDirElegida = event.target.value;
-        const textoSeleccionado = event.target.options[event.target.selectedIndex].text;
-
-        arrayDireccionesUsusario.push(arrayDireccionesEncontradas[posDirElegida]);
+        posDirElegida = event.target.value;
         console.log("Valor seleccionado:", posDirElegida);
-        console.log("Texto seleccionado:", textoSeleccionado);
     });
 }
 
+    const listaCategorias = document.getElementById("categoriaPersonalizada");
+    const btnGuardar = document.getElementById("boton2");
+    let categoriaElegida = null;
+
+    btnGuardar.addEventListener("click", () => {
+        
+        guardarCategoria();
+        guardarDireccionCategoria();
+    });
+
+    function guardarCategoria(){
+            categoriaElegida = listaCategorias.value;
+    }
+
+    function guardarDireccionCategoria(){
+        let datosAGuardar = [arrayDireccionesEncontradas[posDirElegida]];
+        datosAGuardar[posDirElegida].categoria = categoriaElegida;
+
+    arrayDireccionesUsusario.push(datosAGuardar);
+}
 
