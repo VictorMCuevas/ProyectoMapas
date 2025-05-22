@@ -29,7 +29,7 @@ const marcadoresRoma = L.layerGroup([
 const catedral = crearPuntosInteres("Catedral", 41.499110, -5.754679, "Religioso");
 const puenteDePiedra = crearPuntosInteres("Puente de Piedra", 41.499419, -5.748105, "Historico");
 const plazaMayorZamora = crearPuntosInteres("Plaza Mayor de Zamora", 41.503530, -5.746697, "Interes");
-const murallaZamora = crearPuntosInteres("Muralla de Zamora", 41.500496, -5.756190, "Histórico");
+const murallaZamora = crearPuntosInteres("Muralla de Zamora", 41.500496, -5.756190, "Historico");
 const plazaViriato = crearPuntosInteres("Plaza de Viriato", 41.502593, -5.748465, "Interes");
 
 const marcadoresZamora = L.layerGroup([
@@ -253,42 +253,38 @@ function mostrarPuntosInteres(ciudad) {
     if (ciudad === 'roma') {
         for (let i = 0; i < 5; i++) {
             let punto = roma.puntosInteres[i];
-            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto, punto);
         }
     }
     if (ciudad === 'zamora') {
         for (let i = 0; i < 5; i++) {
             let punto = zamora.puntosInteres[i];
-            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto, punto);
         }
     }
     if (ciudad === 'lugo') {
         for (let i = 0; i < 5; i++) {
             let punto = lugo.puntosInteres[i];
-            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto, punto);
         }
     }
     if (ciudad === 'paris') {
         for (let i = 0; i < 5; i++) {
             let punto = paris.puntosInteres[i];
-            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto, punto);
         }
     }
     if (ciudad === 'nueva york') {
         for (let i = 0; i < 5; i++) {
             let punto = nuevaYork.puntosInteres[i];
-            agregarMarcador(punto.latitudPunto, punto.longitudPunto);
+            agregarMarcador(punto.latitudPunto, punto.longitudPunto, punto);
         }
     }
 
-
-
-
-
-
 }
-
-
+/**
+ * funcion eliminar marcador
+ */
 function eliminarMarcador() {
     if (marcadorActual) {
         mapa.removeLayer(marcadorActual);
@@ -297,10 +293,20 @@ function eliminarMarcador() {
 /**
  * Función que agrega un marcador al mapa, elimiando el anterior
  * */
-function agregarMarcador(latitud, longitud) {
+function agregarMarcador(latitud, longitud, punto) {
+let categoria = punto.categoria.toLowerCase();
 
-    // Crear y agregar el nuevo marcador
+     if (categoria==="interes"){
+    marcadorActual= L.marker([latitud, longitud], {icon: marcadorVerde}).addTo(mapa);
+    }else if(categoria==="historico"){
+    marcadorActual= L.marker([latitud, longitud], {icon: marcadorRojo}).addTo(mapa);
+    }else if(categoria==="religioso"){
+    marcadorActual= L.marker([latitud, longitud], {icon: marcadorAzul}).addTo(mapa);
+    }else if(categoria==="cultural"){
+    marcadorActual= L.marker([latitud, longitud], {icon: marcadorRosa}).addTo(mapa);
+    }else{
     marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
+    }
 }
 /**
  * crear marcadores personalizados
@@ -309,31 +315,32 @@ function agregarMarcador(latitud, longitud) {
 var marcadorAzul = L.icon({
     iconUrl: './img/marcadorAzul.png',
    
-    iconSize:     [38, 95], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 var marcadorVerde = L.icon({
     iconUrl: './img/marcadorVerde.png',
    
-    iconSize:     [38, 95], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 var marcadorRojo = L.icon({
     iconUrl: './img/marcadorRojo.png',
    
-    iconSize:     [38, 95], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 var marcadorRosa = L.icon({
-    iconUrl: './img/marcadoRosa.png',
+    iconUrl: './img/marcadorRosa.png',
    
-    iconSize:     [38, 95], // size of the icon
+    iconSize:     [50, 50], // size of the icon
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
+
 /**
  * Función que crea objetos tipo ciudad
  * @param {*} nombre Nombre de ciudad

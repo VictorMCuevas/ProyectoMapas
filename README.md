@@ -42,3 +42,16 @@ https://www.hongkiat.com/blog/html5-datalist/
 **DECISIONES TÉCNICAS**
 
 **IDEAS DE MEJORA**
+
+## SESION 4 (22/05/2025)
+**RESUMEN**
+
+**DIFICULTADES**
+
+**SOLUCIONES**
+
+**FUENTES CONSULTADAS**
+
+**DECISIONES TÉCNICAS**
+
+**IDEAS DE MEJORA**
