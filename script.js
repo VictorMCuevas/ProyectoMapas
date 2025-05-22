@@ -302,7 +302,38 @@ function agregarMarcador(latitud, longitud) {
     // Crear y agregar el nuevo marcador
     marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
 }
+/**
+ * crear marcadores personalizados
+ */
 
+var marcadorAzul = L.icon({
+    iconUrl: './img/marcadorAzul.png',
+   
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var marcadorVerde = L.icon({
+    iconUrl: './img/marcadorVerde.png',
+   
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var marcadorRojo = L.icon({
+    iconUrl: './img/marcadorRojo.png',
+   
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var marcadorRosa = L.icon({
+    iconUrl: './img/marcadoRosa.png',
+   
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 /**
  * Función que crea objetos tipo ciudad
  * @param {*} nombre Nombre de ciudad
