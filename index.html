@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/jpg" href="img/icon.png">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -17,58 +17,114 @@
      crossorigin=""></script>
 </head>
 <body>
-    <header>
-        <h1>MAPS</h1>
-    </header>
-    <div id="background"></div>
-    <table id="form">
-         <tr>
-            <th>Escoge una ciudad:</th>
-            <td>
-                <select id="ciudad" class="custom-select">
-                    <option selected>Elija una ciudad</option>
-                    <option value="roma"  >Roma</option>
-                    <option value="zamora">Zamora</option>
-                    <option value="lugo">Lugo</option>
-                    <option value="paris">París</option>
-                    <option value="nueva york">Nueva York</option>
-                </select>
-            </td>
-        </tr>
+  <header>
+    <h1>MAPS</h1>
+  </header>
 
+  <div id="background"></div>
+
+  <div id="leyenda">
+    <div class="item">
+      <div class="color-box amarillo"></div>
+      <span>Punto de interés</span>
+    </div>
+    <div class="item">
+      <div class="color-box violeta"></div>
+      <span>Punto de interés histórico</span>
+    </div>
+    <div class="item">
+      <div class="color-box azul"></div>
+      <span>Punto de interés religioso</span>
+    </div>
+    <div class="item">
+      <div class="color-box rosa"></div>
+      <span>Punto de interés cultural</span>
+    </div>
+
+    <button id="botonTerremotos">Información terremotos</button>
+
+    <div id="terremotos">
+    <div class="item">
+      <div class="color-box verde"></div>
+      <span>Magnitud menor a 3</span>
+    </div>
+
+     <div class="item">
+      <div class="color-box naranja"></div>
+      <span>Magnitud mayor a 3</span>
+    </div>
+
+     <div class="item">
+      <div class="color-box rojo"></div>
+      <span>Magnitud mayor a 4</span>
+    </div>
+
+  </div>
+
+  </div>
+
+  <div id="guardarDatos"></div>
+
+  
+  <div id="mainContenedor">
+
+    <table id="form">
+      <tr id="escogerCiudad">
+        <th>Escoge una ciudad:</th>
+        <td>
+          <select id="ciudad" class="custom-select">
+            <option selected>Elija una ciudad</option>
+            <option value="roma">Roma</option>
+            <option value="zamora">Zamora</option>
+            <option value="lugo">Lugo</option>
+            <option value="paris">París</option>
+            <option value="nueva york">Nueva York</option>
+          </select>
+        </td>
+      </tr>
     </table>
-    <div id="map"></div>
+
+    <div id="mapaContenedor">
+      <div id="map"></div>
+    </div>
+
+    
     <div id="boton1">
-        <button>Añadir marcador personalizado</button>
+      <button>Añadir marcador personalizado</button>
     </div>
+
+    
     <div id="añadir">
-        <table id="personalizado">
-            <tr>
-            <th>Escribe la dirección:</th>
-            <td>
-                <input type="search" id="dirPersonalizada" list="sugerencias">
-                <button id="buscar">Buscar</button>
-                <br>
-                <select id="selector"></select>
-                <!--<datalist id="sugerencias" >
-                    <option value="eeeeee"></option>
-                </datalist>-->
-            </td>
-            <th>Selecciona una categoría:</th>
-            <td>
-                <select id="categoriaPersonalizada">
-                    <option selected value="historico">Histórico</option>
-                    <option value="religioso">Religioso</option>
-                    <option value="cultural">Cultural</option>
-                    <option value="interes">Interés</option>
-                </select>
-            </td>
-            </tr>
-        </table>
-        <div id="boton2">
-            <button>Añadir</button>
-        </div>
+      <table id="personalizado">
+        <tr>
+          <th>Escribe la dirección:</th>
+          <td>
+            <input type="search" id="dirPersonalizada" list="sugerencias">
+            <button id="buscar">Buscar</button>
+            <br>
+            <div id="muestraDirecciones"></div>
+          </td>
+          <th>Selecciona una categoría:</th>
+          <td>
+            <select id="categoriaPersonalizada">
+              <option selected value="historico">Histórico</option>
+              <option value="religioso">Religioso</option>
+              <option value="cultural">Cultural</option>
+              <option value="interes">Interés</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <div id="botones">
+        <button id="boton2">Guardar</button>
+        <br/>
+        <button id="botonEliminar">Limpiar historial</button>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
