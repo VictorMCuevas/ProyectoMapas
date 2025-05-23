@@ -522,6 +522,7 @@ function guardarDireccionCategoria() {
         nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name,
         importancia: arrayDireccionesEncontradas[posDirElegida].importance
     };
+    console.log("DATOS GUARDADOS: Latitud"+ datosAGuardar.latitud + "  Longitud: " + datosAGuardar.longitud)
     arrayDireccionesUsusario.push(datosAGuardar);
     mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 14);
     mostrarCiudadesGuardadas();
@@ -533,14 +534,7 @@ function guardarDireccionCategoria() {
     marcadoresUsuario.addLayer(nuevoMarcador);
 
     const layers = marcadoresUsuario.getLayers();
-    let zoom;
-
-
-    if (datosAGuardar.importancia >= 0.3) {zoom = 15;}
-    if (datosAGuardar.importancia >= 0.5) {zoom = 13;}
-    if (datosAGuardar.importancia >= 0.7){zoom = 10;}
-    if (datosAGuardar.importancia >= 0.9){zoom = 4;}
-
+    let zoom = calcularZoom(parseFloat(datosAGuardar.importancia) );
     mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], zoom);
 //if (layers.length === 1) {
     // Primer marcador
@@ -554,7 +548,16 @@ function guardarDireccionCategoria() {
 }
 
     
+function calcularZoom(importancia){
+    console.log("Valor de importancia: " + importancia);
+    let zoom;
+    if (importancia >= 0.3) {zoom = 15;}
+    if (importancia >= 0.5) {zoom = 13;}
+    if (importancia >= 0.7){zoom = 10;}
+    if (importancia >= 0.9){zoom = 4;}
+return zoom;
 
+}
 
 const divGuardarDatos = document.createElement("guardarDatos"); 
 
@@ -610,10 +613,14 @@ function mostrarCiudadesGuardadas() {
         select.appendChild(opcion);
     }
 
-
+    let puntoGuardadoElegido;
     //Recoge el valor de la opción elegida en el desplegable de direcciones.
     select.addEventListener("change", function (event) {
-        let puntoGuardadoElegido = event.target.value;
+        puntoGuardadoElegido = event.target.value;
+        let vista = calcularZoom(arrayDireccionesUsusario[puntoGuardadoElegido].importancia);
+        console.log("Valor de vista: " + vista)
+        console.log("dasdsafasdffdsff")
+        mapa.setView([arrayDireccionesUsusario[puntoGuardadoElegido].latitud, arrayDireccionesUsusario[puntoGuardadoElegido].longitud], vista);
         console.log("Punto guardado elegido:", puntoGuardadoElegido);
     });
 
@@ -621,6 +628,9 @@ function mostrarCiudadesGuardadas() {
     tabla.querySelector("tbody")
         ? tabla.querySelector("tbody").appendChild(nuevaFila)
         : tabla.appendChild(nuevaFila);
+
+
+
 }
 const botonEliminar =document.getElementById("botonEliminar");
 
