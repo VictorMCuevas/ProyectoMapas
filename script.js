@@ -663,26 +663,15 @@ function mostrarLeyenda(){
 /**
  * funcion coger datos del xml
  */
-function extraerDatosDesdeDescripcion(desc) {
-  const latMatch = desc.match(/Latitud:<\/b>\s*([0-9.\-]+)/);
-  const longMatch = desc.match(/Longitud:<\/b>\s*([0-9.\-]+)/);
-  const magMatch = desc.match(/Magnitud:<\/b>\s*([\d.]+)/);
+function extraerDatosDesdeDescripcion(descripcion) {
+  
+  const magMatch = descripcion.match(/magnitud:<\/b>\s*([\d.]+)/);
 
-  let lat, long, magn;
-    if (latMatch) {
-    lat = parseFloat(latMatch[1]);
-    } else {
-    lat = null;
-    }
-   
-    if (longMatch) {
-    long = parseFloat(longMatch[1]);
-    } else {
-    long = null;
-    }
+const lat = parseFloat(item.querySelector('geo\\:lat')?.textContent || 0);
+const lon = parseFloat(item.querySelector('geo\\:long')?.textContent || 0);
 
-    if (longMatch) {
-    magn = parseFloat(longMatch[1]);
+    if (magMatch) {
+    magn = parseFloat(magMatch[1]);
     } else {
     magn = null;
     }
