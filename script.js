@@ -447,9 +447,9 @@ function mostrarSugerencias() {
     divDirecciones.appendChild(select);
 
     //Si hay más de una opción a mostrar(direcciones encontradas), crea la primera option con el mensaje informativo
-    if (arrayDireccionesEncontradas.length > 1) {
+    if (arrayDireccionesEncontradas.length > 0) {
         const opcionDefecto = document.createElement('option');
-        opcionDefecto.textContent = "Varias coincidencias encontradas, elija una."
+        opcionDefecto.textContent = "Escoge en la lista de resultados"
         opcionDefecto.disabled = true;
         opcionDefecto.selected = true;
         select.appendChild(opcionDefecto)
@@ -520,15 +520,15 @@ function guardarDireccionCategoria() {
     marcadoresUsuario.addLayer(nuevoMarcador);
 
     const layers = marcadoresUsuario.getLayers();
-
-if (layers.length === 1) {
-    // Primer marcador
     mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], 13);
-} else {
+//if (layers.length === 1) {
+    // Primer marcador
+    
+/*} else {
     // Hay varios marcadores → calcular límites de todos
     const bounds = L.latLngBounds(layers.map(layer => layer.getLatLng()));
     mapa.fitBounds(bounds, { padding: [30, 30] });
-}
+}*/
 
 }
 
