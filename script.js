@@ -293,20 +293,28 @@ function eliminarMarcador() {
 /**
  * Función que agrega un marcador al mapa, elimiando el anterior
  * */
-function agregarMarcador(latitud, longitud, punto) {
+function agregarMarcador(latitud, longitud, punto, magnitud) {
     let categoria = punto.categoria.toLowerCase();
 
     if (categoria === "interes") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVerde }).addTo(mapa);
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAmarillo }).addTo(mapa);
     } else if (categoria === "historico") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRojo }).addTo(mapa);
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVioleta }).addTo(mapa);
     } else if (categoria === "religioso") {
         marcadorActual = L.marker([latitud, longitud], { icon: marcadorAzul }).addTo(mapa);
     } else if (categoria === "cultural") {
         marcadorActual = L.marker([latitud, longitud], { icon: marcadorRosa }).addTo(mapa);
-    } else {
+    } else if(magnitud<3){
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVerde }).addTo(mapa);
+    }else if(magnitud>3 && magnitud<4){
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorNaranja }).addTo(mapa);
+    }else if(magnitud>4){
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRojo }).addTo(mapa);
+    }
+    else {
         marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
     }
+
 }
 /**
  * crear marcadores personalizados
@@ -336,7 +344,24 @@ var marcadorRosa = L.icon({
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -768]
 });
-
+var marcadorVioleta = L.icon({
+    iconUrl: './img/marcadorVioleta.png',
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
+});
+var marcadorNaranja = L.icon({
+    iconUrl: './img/marcadorNaranja.png',
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
+});
+var marcadorAmarillo = L.icon({
+    iconUrl: './img/marcadorAmarillo.png',
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -768]
+});
 
 /**
  * Función que crea objetos tipo ciudad
@@ -650,7 +675,7 @@ const botonTerremotos= document.getElementById("botonTerremotos");
 
 botonTerremotos.addEventListener("click", () => {
 mostrarLeyenda();
-
+cargarTerremotos();
 })
 /**
  * funcion leyenda terremotos
@@ -660,24 +685,34 @@ function mostrarLeyenda(){
  document.getElementById("terremotos").style.display = "block";
 }
 
-/**
- * funcion coger datos del xml
- */
-function extraerDatosDesdeDescripcion(descripcion) {
-  
-  const magMatch = descripcion.match(/magnitud:<\/b>\s*([\d.]+)/);
-
-const lat = parseFloat(item.querySelector('geo\\:lat')?.textContent || 0);
-const lon = parseFloat(item.querySelector('geo\\:long')?.textContent || 0);
-
-    if (magMatch) {
-    magn = parseFloat(magMatch[1]);
-    } else {
-    magn = null;
-    }
-}
 
 /**
  * funcion cargar xml
  */
+const magnitud="";
 
+function cargarTerremotos() {
+  fetch('https://www.ign.es/ign/RssTools/sismologia.xml')
+    .then(response => response.text()) 
+    .then(str => {
+      const parser = new DOMParser(); 
+      const xml = parser.parseFromString(str, "application/xml");
+
+      const items = xml.querySelectorAll('item'); 
+
+      items.forEach(item => {
+        const lat = parseFloat(item.querySelector('geo\\:lat')?.textContent || 0);
+        const lon = parseFloat(item.querySelector('geo\\:long')?.textContent || 0);
+        const descripcion = item.querySelector('description')?.textContent || "";
+        const titulo = item.querySelector('title')?.textContent;
+
+        const magMatch = descripcion.match(/magnitud\s+([\d.]+)/i);
+        magnitud = magMatch ? parseFloat(magMatch[1]) : null;
+
+        agregarMarcador(lat, lon, magnitud, descripcion, titulo);
+      });
+    })
+    .catch(error => {
+      console.error("Error cargando el XML:", error);
+    });
+}

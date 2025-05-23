@@ -169,6 +169,8 @@ select:focus , button:focus{
     .azul { background-color: blue; }
     .rosa{background-color: rgb(175, 83, 114);}
     .naranja{background-color: rgb(219, 129, 39);}
+    .amarillo{background-color: rgb(239, 239, 58);}
+    .violeta{background-color: rgb(148, 56, 148);}
 
   #guardarDatos{
    position: fixed;
