@@ -2,10 +2,19 @@ h1{
     text-align: center;
     color: rgb(255, 255, 255);
     font-family: "Amarante", serif;
-    font-size: 60px;
+    font-size: 70px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 20px;
 }
 body{
-    background-color: black; 
+    background-color: rgb(67, 67, 67); 
 }
 #background {
   position: fixed;
@@ -18,9 +27,10 @@ body{
   background-size:cover;
   background-position: center;
   opacity: 50%;
-  background-image: url("/img/fondo.jpg");
+  background-image: url("/img/fondo2.jpg");
 
 }
+
 
 #form, #personalizado{
     display: flex;
@@ -32,6 +42,7 @@ body{
      font-family: "Amarante", serif;
      font-size: 20px;
      padding-bottom: 2%;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 select, button, input {
@@ -60,61 +71,84 @@ select:focus , button:focus{
   border-color: rgb(189, 175, 97);
   box-shadow: 0 0 10px rgb(189, 175, 97);;
 }
+#mainContenedor {
+  margin-left: 220px;
+  margin-right: 220px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 50px;
+}
 
-#map { 
-  width: 500px;
-  height: 350px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#mapaContenedor {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
   border-color: rgb(98, 97, 97);
   border-style: inset;
   border-width: 10px;
-  margin-top: 5%;
+  margin-top: 20px;
+  position: relative;
+}
 
+ #boton1, #boton2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
  }
- #boton1{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-top: 27%;
- }
+ #boton1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}
  #añadir{
-  margin-top: 27%;
+
+  margin-top: 20px;
   display: none;
   justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
- }
-#boton2{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+#boton2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
 }
 #leyenda{
-  height: 100%;
-  width: 200px; 
-  position: fixed; 
-  z-index: 1; 
-  top: 0; 
+   position: fixed;
+  top: 0;
   left: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-   background-color: #615f5f; 
-  color: #f5f5f5; 
+  width: 200px;
+  height: 100vh;
+  background-color: rgba(97, 95, 95, 0.6);
+  color: #ffffff; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-family: "Amarante", serif;
   font-size: 16px;
-
+  padding: 20px 10px;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
   border-right: 2px solid #8d8c8c;
+  backdrop-filter: blur(4px)
 }
 .item {
       display: flex;
@@ -134,3 +168,23 @@ select:focus , button:focus{
     .verde { background-color: green; }
     .azul { background-color: blue; }
     .rosa{background-color: rgb(175, 83, 114);}
+
+  #guardarDatos{
+   position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: rgba(97, 95, 95, 0.6); 
+  color: #ffffff;
+  font-family: "Amarante", serif;
+  font-size: 16px;
+  padding: 20px 10px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 2px solid #8d8c8c;
+  backdrop-filter: blur(4px);
+  
+  }
