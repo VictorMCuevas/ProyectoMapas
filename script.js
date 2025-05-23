@@ -673,15 +673,23 @@ botonEliminar.addEventListener("click", () => {
 });
 
 
-/**
- * terremotos
- */
 const botonTerremotos= document.getElementById("botonTerremotos");
-
+let vista=false;
 botonTerremotos.addEventListener("click", () => {
-mostrarLeyenda();
-cargarTerremotos();
-mapa.setView([42.995607893370135,-9.407043457031252], 4);
+    mapa.setView([42.995607893370135,-9.407043457031252], 4);
+    
+    if (!vista){
+    mostrarLeyenda();
+    cargarTerremotos();
+    vista= true;
+    }else {
+        ocultarLeyenda();
+        
+        vista=false;
+    }
+    
+ 
+
 })
 /**
  * funcion leyenda terremotos
@@ -690,8 +698,9 @@ mapa.setView([42.995607893370135,-9.407043457031252], 4);
 function mostrarLeyenda(){
  document.getElementById("terremotos").style.display = "block";
 }
-
-
+function ocultarLeyenda(){
+    document.getElementById("terremotos").style.display = "none";
+}
 /**
  * funcion cargar xml
  */
