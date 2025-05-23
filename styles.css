@@ -101,7 +101,7 @@ select:focus , button:focus{
   position: relative;
 }
 
- #boton1, #boton2,{
+ #boton1, #boton2{
   display: flex;
   justify-content: center;
   margin-top: 10px;
