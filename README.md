@@ -45,13 +45,14 @@ https://www.hongkiat.com/blog/html5-datalist/
 
 ## SESION 4 (22/05/2025)
 **RESUMEN**
-Continuar con el trabajo de la sesión anterior, planear la siguiente.
+Se ha termiando el trabajo, solo queda retocar algunos detalles.
 **DIFICULTADES**
-Guardar los datos de las direcciones personalizadas.
+Trabajar con los marcadores e implementar la parte de alertas de terremotos.
 **SOLUCIONES**
 Consulta en internet, puesta en común.
 **FUENTES CONSULTADAS**
 StackOverflow
 **DECISIONES TÉCNICAS**
-
+Cambio de diseño y mejoras en rendimiento de la web.
 **IDEAS DE MEJORA**
+Corregir los fallos que encontremos.

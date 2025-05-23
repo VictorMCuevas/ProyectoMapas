@@ -496,9 +496,17 @@ function mostrarSugerencias() {
 
         document.getElementById('selector').appendChild(opcion);
     }
+    let marca = null;
     //Recoge el valor de la opción elegida en el desplegable de direcciones.
     select.addEventListener("change", function (event) {
+        
+        if (marca){
+            mapa.removeLayer(marca);
+        }
+        
         posDirElegida = event.target.value;
+        mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat,arrayDireccionesEncontradas[posDirElegida].lon], 11);
+        marca = L.marker([arrayDireccionesEncontradas[posDirElegida].lat,arrayDireccionesEncontradas[posDirElegida].lon]).addTo(mapa);
         console.log("Valor seleccionado:", posDirElegida);
     });
 }
