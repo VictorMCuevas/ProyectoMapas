@@ -507,7 +507,8 @@ function guardarDireccionCategoria() {
         latitud: arrayDireccionesEncontradas[posDirElegida].lat,
         longitud: arrayDireccionesEncontradas[posDirElegida].lon,
         categoria: categoriaElegida,
-        nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name
+        nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name,
+        importancia: arrayDireccionesEncontradas[posDirElegida].importance
     };
     arrayDireccionesUsusario.push(datosAGuardar);
     mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 14);
@@ -520,7 +521,12 @@ function guardarDireccionCategoria() {
     marcadoresUsuario.addLayer(nuevoMarcador);
 
     const layers = marcadoresUsuario.getLayers();
-    mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], 13);
+    let zoom;
+    if (datosAGuardar.importancia >= 0.3) {zoom = 15;}
+    if (datosAGuardar.importancia >= 0.5) {zoom = 13;}
+    if (datosAGuardar.importancia >= 0.7){zoom = 10;} 
+
+    mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], zoom);
 //if (layers.length === 1) {
     // Primer marcador
     
