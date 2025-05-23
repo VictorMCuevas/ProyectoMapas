@@ -472,7 +472,9 @@ function mostrarSugerencias() {
         console.log("Valor seleccionado:", posDirElegida);
     });
 }
-
+/**
+ * guardar personalización
+ */
 const listaCategorias = document.getElementById("categoriaPersonalizada");
 const btnGuardar = document.getElementById("boton2");
 let categoriaElegida = null;
@@ -567,3 +569,10 @@ function mostrarCiudadesGuardadas() {
         ? tabla.querySelector("tbody").appendChild(nuevaFila)
         : tabla.appendChild(nuevaFila);
 }
+
+const botonEliminar =document.getElementById("botonEliminar");
+
+botonEliminar.addEventListener("click", () => {
+
+
+})

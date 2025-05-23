@@ -101,7 +101,7 @@ select:focus , button:focus{
   position: relative;
 }
 
- #boton1, #boton2 {
+ #boton1, #boton2,{
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -123,7 +123,7 @@ select:focus , button:focus{
   align-items: center;
   position: relative;
 }
-#boton2 {
+#boton2 , #botones{
   display: flex;
   justify-content: center;
   flex-direction: column;
