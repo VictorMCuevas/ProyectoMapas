@@ -640,4 +640,55 @@ botonEliminar.addEventListener("click", () => {
         arrayDireccionesUsusario.length = 0;
     }
 
+});
+
+
+/**
+ * terremotos
+ */
+const botonTerremotos= document.getElementById("botonTerremotos");
+
+botonTerremotos.addEventListener("click", () => {
+mostrarLeyenda();
+
 })
+/**
+ * funcion leyenda terremotos
+ */
+
+function mostrarLeyenda(){
+ document.getElementById("terremotos").style.display = "block";
+}
+
+/**
+ * funcion coger datos del xml
+ */
+function extraerDatosDesdeDescripcion(desc) {
+  const latMatch = desc.match(/Latitud:<\/b>\s*([0-9.\-]+)/);
+  const longMatch = desc.match(/Longitud:<\/b>\s*([0-9.\-]+)/);
+  const magMatch = desc.match(/Magnitud:<\/b>\s*([\d.]+)/);
+
+  let lat, long, magn;
+    if (latMatch) {
+    lat = parseFloat(latMatch[1]);
+    } else {
+    lat = null;
+    }
+   
+    if (longMatch) {
+    long = parseFloat(longMatch[1]);
+    } else {
+    long = null;
+    }
+
+    if (longMatch) {
+    magn = parseFloat(longMatch[1]);
+    } else {
+    magn = null;
+    }
+}
+
+/**
+ * funcion cargar xml
+ */
+

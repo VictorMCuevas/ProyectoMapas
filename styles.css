@@ -168,6 +168,7 @@ select:focus , button:focus{
     .verde { background-color: green; }
     .azul { background-color: blue; }
     .rosa{background-color: rgb(175, 83, 114);}
+    .naranja{background-color: rgb(219, 129, 39);}
 
   #guardarDatos{
    position: fixed;
@@ -187,4 +188,7 @@ select:focus , button:focus{
   border-left: 2px solid #8d8c8c;
   backdrop-filter: blur(4px);
   
+  }
+  #terremotos{
+    display: none;
   }
