@@ -406,7 +406,7 @@ function geocodificar() {
 
     fetch(url, {
         headers: {
-            'User-Agent': 'Maps/1.0 (fvereszeltia@gmail.com)' // Requerido por Nominatim
+            'User-Agent': 'Maps/1.0 (hola@gmail.com)' // Requerido por Nominatim
         }
     })
         .then(response => response.json())
@@ -425,6 +425,16 @@ function geocodificar() {
     console.log("Hola")
 }
 
+/**
+ * 
+ * @param {*} linea 
+ * @returns 
+ */
+function acortarResultados(linea) {
+    let lineaAcortada = "";
+    lineaAcortada = linea.length > 60 ? linea.slice(0, 57) + "..." : linea;
+    return lineaAcortada;
+}
 /**
  * mostrar array en sugernecias de busqueda
  */
@@ -455,12 +465,14 @@ function mostrarSugerencias() {
         select.appendChild(opcionDefecto)
     }
 
+    let textoCorto = "";
     //Crea tantas opciones en el select como direcciones encontradas    
     for (let i = 0; i < arrayDireccionesEncontradas.length; i++) {
-
         const opcion = document.createElement('option');
         opcion.setAttribute("value", i);
-        let nod = document.createTextNode(arrayDireccionesEncontradas[i].display_name);
+
+        textoCorto = acortarResultados(arrayDireccionesEncontradas[i].display_name);
+        let nod = document.createTextNode(textoCorto);
         opcion.appendChild(nod);
 
 
@@ -522,9 +534,12 @@ function guardarDireccionCategoria() {
 
     const layers = marcadoresUsuario.getLayers();
     let zoom;
+
+
     if (datosAGuardar.importancia >= 0.3) {zoom = 15;}
     if (datosAGuardar.importancia >= 0.5) {zoom = 13;}
-    if (datosAGuardar.importancia >= 0.7){zoom = 10;} 
+    if (datosAGuardar.importancia >= 0.7){zoom = 10;}
+    if (datosAGuardar.importancia >= 0.9){zoom = 4;}
 
     mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], zoom);
 //if (layers.length === 1) {
