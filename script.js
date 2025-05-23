@@ -656,6 +656,10 @@ botonEliminar.addEventListener("click", () => {
     if (confirm("¿Estás seguro de que deseas eliminar todos los marcadores personalizados?")) {
         marcadoresUsuario.clearLayers();
         arrayDireccionesUsusario.length = 0;
+        const filaExistente = document.getElementById("trCiudadesGuardadas");
+        if (filaExistente) {
+            filaExistente.remove();
+        }
     }
 
 });
