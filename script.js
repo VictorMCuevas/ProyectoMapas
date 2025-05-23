@@ -673,6 +673,7 @@ const botonTerremotos= document.getElementById("botonTerremotos");
 botonTerremotos.addEventListener("click", () => {
 mostrarLeyenda();
 cargarTerremotos();
+mapa.setView([42.995607893370135,-9.407043457031252], 4);
 })
 /**
  * funcion leyenda terremotos
