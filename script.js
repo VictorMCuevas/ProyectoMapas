@@ -23,8 +23,8 @@ const marcadoresRoma = L.layerGroup([
     L.marker([sanPedro.latitudPunto, sanPedro.longitudPunto]).bindPopup(sanPedro.nombre),
     L.marker([castilloSanAngelo.latitudPunto, castilloSanAngelo.longitudPunto]).bindPopup(castilloSanAngelo.nombre),
     L.marker([panteonRoma.latitudPunto, panteonRoma.longitudPunto]).bindPopup(panteonRoma.nombre),
-    L.marker([fontanaDiTrevi.latitudPunto, fontanaDiTrevi.longitudPunto]).bindPopup(fontanaDiTrevi.nombre) 
-  ])
+    L.marker([fontanaDiTrevi.latitudPunto, fontanaDiTrevi.longitudPunto]).bindPopup(fontanaDiTrevi.nombre)
+])
 //Zamora
 const catedral = crearPuntosInteres("Catedral", 41.499110, -5.754679, "Religioso");
 const puenteDePiedra = crearPuntosInteres("Puente de Piedra", 41.499419, -5.748105, "Historico");
@@ -37,8 +37,8 @@ const marcadoresZamora = L.layerGroup([
     L.marker([puenteDePiedra.latitudPunto, puenteDePiedra.longitudPunto]).bindPopup(puenteDePiedra.nombre),
     L.marker([plazaMayorZamora.latitudPunto, plazaMayorZamora.longitudPunto]).bindPopup(plazaMayorZamora.nombre),
     L.marker([murallaZamora.latitudPunto, murallaZamora.longitudPunto]).bindPopup(murallaZamora.nombre),
-    L.marker([plazaViriato.latitudPunto, plazaViriato.longitudPunto]).bindPopup(plazaViriato.nombre) 
-  ])
+    L.marker([plazaViriato.latitudPunto, plazaViriato.longitudPunto]).bindPopup(plazaViriato.nombre)
+])
 //Lugo
 const murallaLugo = crearPuntosInteres("Muralla de Lugo", 43.008798, -7.559396, "Historico");
 const plazaMayorLugo = crearPuntosInteres("Plaza Mayor de Lugo", 43.009700, -7.556671, "Interes");
@@ -51,8 +51,8 @@ const marcadoresLugo = L.layerGroup([
     L.marker([plazaMayorLugo.latitudPunto, plazaMayorLugo.longitudPunto]).bindPopup(plazaMayorLugo.nombre),
     L.marker([catedralDeLugo.latitudPunto, catedralDeLugo.longitudPunto]).bindPopup(catedralDeLugo.nombre),
     L.marker([domusLugo.latitudPunto, domusLugo.longitudPunto]).bindPopup(domusLugo.nombre),
-    L.marker([parqueRosalia.latitudPunto, parqueRosalia.longitudPunto]).bindPopup(parqueRosalia.nombre) 
-  ])
+    L.marker([parqueRosalia.latitudPunto, parqueRosalia.longitudPunto]).bindPopup(parqueRosalia.nombre)
+])
 //Paris
 const torreEiffel = crearPuntosInteres("Torre Eiffel", 48.858253, 2.294474, "Interes");
 const louvre = crearPuntosInteres("Museo del Louvre", 48.860552, 2.337720, "Cultural");
@@ -65,8 +65,8 @@ const marcadoresParis = L.layerGroup([
     L.marker([louvre.latitudPunto, louvre.longitudPunto]).bindPopup(louvre.nombre),
     L.marker([notreDame.latitudPunto, notreDame.longitudPunto]).bindPopup(notreDame.nombre),
     L.marker([arcoDelTriunfo.latitudPunto, arcoDelTriunfo.longitudPunto]).bindPopup(arcoDelTriunfo.nombre),
-    L.marker([sagradoCorazon.latitudPunto, sagradoCorazon.longitudPunto]).bindPopup(sagradoCorazon.nombre) 
-  ])
+    L.marker([sagradoCorazon.latitudPunto, sagradoCorazon.longitudPunto]).bindPopup(sagradoCorazon.nombre)
+])
 //Nueva York
 const centralPark = crearPuntosInteres("Central Park", 40.78394, -73.96569, "Interes");
 const estatuaLibertar = crearPuntosInteres("Estatua de la Libertad", 40.689248, -74.044518, "Interes");
@@ -79,9 +79,9 @@ const marcadoresNuevaYork = L.layerGroup([
     L.marker([estatuaLibertar.latitudPunto, estatuaLibertar.longitudPunto]).bindPopup(estatuaLibertar.nombre),
     L.marker([puenteDeBrooklyn.latitudPunto, puenteDeBrooklyn.longitudPunto]).bindPopup(puenteDeBrooklyn.nombre),
     L.marker([empireState.latitudPunto, empireState.longitudPunto]).bindPopup(empireState.nombre),
-    L.marker([moma.latitudPunto, moma.longitudPunto]).bindPopup(moma.nombre) 
-  ])
-  
+    L.marker([moma.latitudPunto, moma.longitudPunto]).bindPopup(moma.nombre)
+])
+
 //CREACCIÓN DE CIUDADES
 const roma = crearCiudad("Roma", 41.8944, 12.5200, [coliseo, sanPedro, castilloSanAngelo, panteonRoma, fontanaDiTrevi]);
 const zamora = crearCiudad("Zamora", 41.50633, -5.74628, [catedral, puenteDePiedra, plazaMayorZamora, murallaZamora, plazaViriato]);
@@ -114,8 +114,8 @@ const poligonoRoma = [
 
 const poligonoZamora = [
     [41.49190, -5.75954], [41.49517, -5.76096], [41.49739, -5.76066], [41.50099, -5.76229], [41.50340, -5.76370]
-    ,[41.51141, -5.77314], [41.51854, -5.76872], [41.52737, -5.76752], [41.52991, -5.75649], [41.52294, -5.74782]
-    ,[41.52281, -5.73280], [41.52435, -5.71993], [41.52304, -5.71263], [41.51713, -5.71388], [41.49849, -5.72752],
+    , [41.51141, -5.77314], [41.51854, -5.76872], [41.52737, -5.76752], [41.52991, -5.75649], [41.52294, -5.74782]
+    , [41.52281, -5.73280], [41.52435, -5.71993], [41.52304, -5.71263], [41.51713, -5.71388], [41.49849, -5.72752],
     [41.48630, -5.73877], [41.48206, -5.75379], [41.48617, -5.75980]
 ]
 
@@ -154,7 +154,7 @@ const poligonoNuevaYork = [
 ];
 
 
-function reiniciarArrayCiudades(){
+function reiniciarArrayCiudades() {
     arrayCiudades.push(roma, zamora, lugo, paris, nuevaYork);
 }
 
@@ -294,18 +294,18 @@ function eliminarMarcador() {
  * Función que agrega un marcador al mapa, elimiando el anterior
  * */
 function agregarMarcador(latitud, longitud, punto) {
-let categoria = punto.categoria.toLowerCase();
+    let categoria = punto.categoria.toLowerCase();
 
-     if (categoria==="interes"){
-    marcadorActual= L.marker([latitud, longitud], {icon: marcadorVerde}).addTo(mapa);
-    }else if(categoria==="historico"){
-    marcadorActual= L.marker([latitud, longitud], {icon: marcadorRojo}).addTo(mapa);
-    }else if(categoria==="religioso"){
-    marcadorActual= L.marker([latitud, longitud], {icon: marcadorAzul}).addTo(mapa);
-    }else if(categoria==="cultural"){
-    marcadorActual= L.marker([latitud, longitud], {icon: marcadorRosa}).addTo(mapa);
-    }else{
-    marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
+    if (categoria === "interes") {
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVerde }).addTo(mapa);
+    } else if (categoria === "historico") {
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRojo }).addTo(mapa);
+    } else if (categoria === "religioso") {
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAzul }).addTo(mapa);
+    } else if (categoria === "cultural") {
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRosa }).addTo(mapa);
+    } else {
+        marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
     }
 }
 /**
@@ -314,26 +314,26 @@ let categoria = punto.categoria.toLowerCase();
 
 var marcadorAzul = L.icon({
     iconUrl: './img/marcadorAzul.png',
-    iconSize:     [40, 40], // size of the icon
-    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -768]
 });
 var marcadorVerde = L.icon({
     iconUrl: './img/marcadorVerde.png',
-    iconSize:     [40, 40], // size of the icon
-    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -768]
 });
 var marcadorRojo = L.icon({
     iconUrl: './img/marcadorRojo.png',
-    iconSize:     [40, 40], // size of the icon
-    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -768]
 });
 var marcadorRosa = L.icon({
     iconUrl: './img/marcadorRosa.png',
-    iconSize:     [40, 40], // size of the icon
-    iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -768]
 });
 
@@ -438,9 +438,9 @@ function mostrarSugerencias() {
     console.log(arrayDireccionesEncontradas.length);
 
     //Reinicia el div cada vez que se realiza una busqueda.
-    divDirecciones.innerHTML ="";
+    divDirecciones.innerHTML = "";
     const selectExistente = document.getElementById("select");
-    
+
 
     const select = document.createElement("select");
     select.id = "selector";
@@ -473,29 +473,97 @@ function mostrarSugerencias() {
     });
 }
 
-    const listaCategorias = document.getElementById("categoriaPersonalizada");
-    const btnGuardar = document.getElementById("boton2");
-    let categoriaElegida = null;
+const listaCategorias = document.getElementById("categoriaPersonalizada");
+const btnGuardar = document.getElementById("boton2");
+let categoriaElegida = null;
 
-    btnGuardar.addEventListener("click", () => {
-        
-        guardarCategoria();
-        guardarDireccionCategoria();
-    });
+btnGuardar.addEventListener("click", () => {
 
-    function guardarCategoria(){
-            categoriaElegida = listaCategorias.value;
-    }
+    guardarCategoria();
+    guardarDireccionCategoria();
+});
 
-    function guardarDireccionCategoria(){
-        let datosAGuardar = {
-            nombre: arrayDireccionesEncontradas[posDirElegida].display_name,
-            latitud: arrayDireccionesEncontradas[posDirElegida].lat,
-            longitud: arrayDireccionesEncontradas[posDirElegida].lon,
-            categoria: categoriaElegida
-        };
+function guardarCategoria() {
+    categoriaElegida = listaCategorias.value;
+}
+
+function guardarDireccionCategoria() {
+    let datosAGuardar = {
+        nombre: arrayDireccionesEncontradas[posDirElegida].display_name,
+        latitud: arrayDireccionesEncontradas[posDirElegida].lat,
+        longitud: arrayDireccionesEncontradas[posDirElegida].lon,
+        categoria: categoriaElegida,
+        nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name
+    };
     arrayDireccionesUsusario.push(datosAGuardar);
 
     mapa.setView([arrayDireccionesUsusario[0].latitud, arrayDireccionesUsusario[0].longitud], 11);
+    mostrarCiudadesGuardadas();
 }
 
+const divGuardarDatos = document.createElement("guardarDatos");
+
+
+
+function mostrarCiudadesGuardadas() {
+    const tabla = document.getElementById("escogerCiudad");
+    const filaExistente = document.getElementById("trCiudadesGuardadas");
+
+    if (filaExistente) {
+        filaExistente.remove();
+    }
+
+    // Crear la nueva fila
+    let nuevaFila = document.createElement("tr");
+    nuevaFila.id = "trCiudadesGuardadas";
+
+
+
+    // Crear la celda de encabezado (th)
+    const th = document.createElement("th");
+    th.textContent = "Ciudades guardadas: ";
+
+    // Crear la celda de datos (td) con un select
+    const td = document.createElement("td");
+    const select = document.createElement("select");
+    select.id = "ciudadesGuardadas"; // Asignar el ID
+
+    // Ensamblar la fila
+
+    nuevaFila.appendChild(th);
+    nuevaFila.appendChild(td);
+    td.appendChild(select);
+
+    //Si hay más de una opción a mostrar(direcciones encontradas), crea la primera option con el mensaje informativo
+    if (arrayDireccionesUsusario.length > 0) {
+        const opcionDefecto = document.createElement('option');
+        opcionDefecto.textContent = "Seleccione ubicación"
+        opcionDefecto.disabled = true;
+        opcionDefecto.selected = true;
+        select.appendChild(opcionDefecto)
+    }
+
+    //Crea tantas opciones en el select como direcciones encontradas    
+    for (let i = 0; i < arrayDireccionesUsusario.length; i++) {
+
+        const opcion = document.createElement('option');
+        opcion.setAttribute("value", i);
+        let nod = document.createTextNode(arrayDireccionesUsusario[i].nomAMostrar);
+        opcion.appendChild(nod);
+
+
+        select.appendChild(opcion);
+    }
+
+
+    //Recoge el valor de la opción elegida en el desplegable de direcciones.
+    select.addEventListener("change", function (event) {
+        let puntoGuardadoElegido = event.target.value;
+        console.log("Punto guardado elegido:", puntoGuardadoElegido);
+    });
+
+    // Insertar la nueva fila al final de la tabla
+    tabla.querySelector("tbody")
+        ? tabla.querySelector("tbody").appendChild(nuevaFila)
+        : tabla.appendChild(nuevaFila);
+}
