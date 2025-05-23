@@ -472,9 +472,7 @@ function mostrarSugerencias() {
         console.log("Valor seleccionado:", posDirElegida);
     });
 }
-/**
- * guardar personalización
- */
+
 const listaCategorias = document.getElementById("categoriaPersonalizada");
 const btnGuardar = document.getElementById("boton2");
 let categoriaElegida = null;
@@ -499,7 +497,7 @@ function guardarDireccionCategoria() {
     };
     arrayDireccionesUsusario.push(datosAGuardar);
 
-    mapa.setView([arrayDireccionesUsusario[0].latitud, arrayDireccionesUsusario[0].longitud], 11);
+    mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 14);
     mostrarCiudadesGuardadas();
 }
 
@@ -569,7 +567,6 @@ function mostrarCiudadesGuardadas() {
         ? tabla.querySelector("tbody").appendChild(nuevaFila)
         : tabla.appendChild(nuevaFila);
 }
-
 const botonEliminar =document.getElementById("botonEliminar");
 
 botonEliminar.addEventListener("click", () => {
