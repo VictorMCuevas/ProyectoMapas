@@ -487,6 +487,20 @@ function guardarCategoria() {
     categoriaElegida = listaCategorias.value;
 }
 
+// Grupo de marcadores de usuario
+let marcadoresUsuario = L.layerGroup().addTo(mapa);
+
+// Función para obtener ícono según categoría *****añadir****
+function obtenerIconoPorCategoria(categoria) {
+    switch (categoria) {
+        case "interes": return marcadorVerde;
+        case "historico": return marcadorRojo;
+        case "religioso": return marcadorAzul;
+        case "cultural": return marcadorRosa;
+        default: return L.Icon.Default();
+    }
+}
+
 function guardarDireccionCategoria() {
     let datosAGuardar = {
         nombre: arrayDireccionesEncontradas[posDirElegida].display_name,
@@ -496,12 +510,32 @@ function guardarDireccionCategoria() {
         nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name
     };
     arrayDireccionesUsusario.push(datosAGuardar);
-
     mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 14);
     mostrarCiudadesGuardadas();
+
+    const icono = obtenerIconoPorCategoria(datosAGuardar.categoria);
+    const nuevoMarcador = L.marker([datosAGuardar.latitud, datosAGuardar.longitud], { icon: icono })
+        .bindPopup(datosAGuardar.nombre);
+
+    marcadoresUsuario.addLayer(nuevoMarcador);
+
+    const layers = marcadoresUsuario.getLayers();
+
+if (layers.length === 1) {
+    // Primer marcador
+    mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], 13);
+} else {
+    // Hay varios marcadores → calcular límites de todos
+    const bounds = L.latLngBounds(layers.map(layer => layer.getLatLng()));
+    mapa.fitBounds(bounds, { padding: [30, 30] });
 }
 
-const divGuardarDatos = document.createElement("guardarDatos");
+}
+
+    
+
+
+const divGuardarDatos = document.createElement("guardarDatos"); 
 
 
 
@@ -570,6 +604,9 @@ function mostrarCiudadesGuardadas() {
 const botonEliminar =document.getElementById("botonEliminar");
 
 botonEliminar.addEventListener("click", () => {
-
+    if (confirm("¿Estás seguro de que deseas eliminar todos los marcadores personalizados?")) {
+        marcadoresUsuario.clearLayers();
+        arrayDireccionesUsusario.length = 0;
+    }
 
 })
