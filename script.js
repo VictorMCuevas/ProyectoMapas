@@ -293,7 +293,7 @@ function eliminarMarcador() {
 /**
  * Función que agrega un marcador al mapa, elimiando el anterior
  * */
-function agregarMarcador(latitud, longitud, punto, magnitud) {
+function agregarMarcador(latitud, longitud, punto) {
     let categoria = punto.categoria.toLowerCase();
 
     if (categoria === "interes") {
@@ -304,14 +304,7 @@ function agregarMarcador(latitud, longitud, punto, magnitud) {
         marcadorActual = L.marker([latitud, longitud], { icon: marcadorAzul }).addTo(mapa);
     } else if (categoria === "cultural") {
         marcadorActual = L.marker([latitud, longitud], { icon: marcadorRosa }).addTo(mapa);
-    } else if(magnitud<3){
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVerde }).addTo(mapa);
-    }else if(magnitud>3 && magnitud<4){
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorNaranja }).addTo(mapa);
-    }else if(magnitud>4){
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRojo }).addTo(mapa);
-    }
-    else {
+    }else {
         marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
     }
 
@@ -689,7 +682,7 @@ function mostrarLeyenda(){
 /**
  * funcion cargar xml
  */
-const magnitud="";
+
 
 function cargarTerremotos() {
   fetch('https://www.ign.es/ign/RssTools/sismologia.xml')
@@ -701,18 +694,40 @@ function cargarTerremotos() {
       const items = xml.querySelectorAll('item'); 
 
       items.forEach(item => {
-        const lat = parseFloat(item.querySelector('geo\\:lat')?.textContent || 0);
-        const lon = parseFloat(item.querySelector('geo\\:long')?.textContent || 0);
+        const lat = parseFloat(item.getElementsByTagName("geo:lat")[0]?.textContent || 0);
+const lon = parseFloat(item.getElementsByTagName("geo:long")[0]?.textContent || 0);
         const descripcion = item.querySelector('description')?.textContent || "";
-        const titulo = item.querySelector('title')?.textContent;
-
+        
         const magMatch = descripcion.match(/magnitud\s+([\d.]+)/i);
-        magnitud = magMatch ? parseFloat(magMatch[1]) : null;
+        let magnitud = magMatch ? parseFloat(magMatch[1]) : null;
 
-        agregarMarcador(lat, lon, magnitud, descripcion, titulo);
+        agregarMarcadorTerremoto(lat, lon, magnitud, );
+        console.log(`Añadiendo marcador en (${lat}, ${lon}) con magnitud ${magnitud}`);
       });
     })
     .catch(error => {
       console.error("Error cargando el XML:", error);
     });
+}
+
+/**
+ * agregar marcadores de los terremotos
+ */
+function agregarMarcadorTerremoto(lat, lon, magnitud) {
+    
+
+    if (magnitud < 3) {
+         L.marker([lat, lon], { icon: marcadorVerde }).addTo(mapa);
+        
+    } else if (magnitud >= 3 && magnitud < 4) {
+         L.marker([lat, lon], { icon: marcadorNaranja }).addTo(mapa);
+        icono = marcadorNaranja;
+    } else if (magnitud >= 4) {
+         L.marker([lat, lon], { icon: marcadorRojo }).addTo(mapa);
+       
+    } else {
+         L.marker([lat, lon]).addTo(mapa);
+    }
+
+    
 }
