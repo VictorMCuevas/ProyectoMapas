@@ -9,6 +9,7 @@ const selectCiudad = document.getElementById("ciudad");
 let mapa, ciudad = "";
 let marcadorActual = null;
 let poligono = null;
+let marcadoresTerremotos = [];
 
 //DATOS DE PUNTOS DE INTERÉS
 //Roma
@@ -684,7 +685,7 @@ botonTerremotos.addEventListener("click", () => {
         vista = true;
     } else {
         ocultarLeyenda();
-
+        eliminarTerremotos();
         vista = false;
     }
 
@@ -736,20 +737,20 @@ function cargarTerremotos() {
  * agregar marcadores de los terremotos
  */
 function agregarMarcadorTerremoto(lat, lon, magnitud) {
-
-
+    let icono;
     if (magnitud < 3) {
-        L.marker([lat, lon], { icon: marcadorVerde }).addTo(mapa);
-
-    } else if (magnitud >= 3 && magnitud < 4) {
-        L.marker([lat, lon], { icon: marcadorNaranja }).addTo(mapa);
+        icono = marcadorVerde;
+    } else if (magnitud < 4 && magnitud >= 3) {
         icono = marcadorNaranja;
     } else if (magnitud >= 4) {
-        L.marker([lat, lon], { icon: marcadorRojo }).addTo(mapa);
-
-    } else {
-        L.marker([lat, lon]).addTo(mapa);
+        icono = marcadorRojo;
     }
 
-
+    const marcador = L.marker([lat, lon], { icon: icono }).addTo(mapa)
+        .bindPopup(`Magnitud: ${magnitud}`);
+    marcadoresTerremotos.push(marcador);
+}
+function eliminarTerremotos() {
+    marcadoresTerremotos.forEach(m => mapa.removeLayer(m));
+    marcadoresTerremotos = [];
 }
