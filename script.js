@@ -9,6 +9,7 @@ const selectCiudad = document.getElementById("ciudad");
 let mapa, ciudad = "";
 let marcadorActual = null;
 let poligono = null;
+let marcadoresTerremotos = [];
 
 //DATOS DE PUNTOS DE INTERÉS
 //Roma
@@ -297,14 +298,14 @@ function agregarMarcador(latitud, longitud, punto) {
     let categoria = punto.categoria.toLowerCase();
 
     if (categoria === "interes") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAmarillo }).addTo(mapa);
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAmarillo }).addTo(mapa).bindPopup(punto.nombre);
     } else if (categoria === "historico") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVioleta }).addTo(mapa);
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorVioleta }).addTo(mapa).bindPopup(punto.nombre);
     } else if (categoria === "religioso") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAzul }).addTo(mapa);
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorAzul }).addTo(mapa).bindPopup(punto.nombre);
     } else if (categoria === "cultural") {
-        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRosa }).addTo(mapa);
-    }else {
+        marcadorActual = L.marker([latitud, longitud], { icon: marcadorRosa }).addTo(mapa).bindPopup(punto.nombre);
+    } else {
         marcadorActual = L.marker([latitud, longitud]).addTo(mapa);
     }
 
@@ -317,43 +318,43 @@ var marcadorAzul = L.icon({
     iconUrl: './img/marcadorAzul.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorVerde = L.icon({
     iconUrl: './img/marcadorVerde.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorRojo = L.icon({
     iconUrl: './img/marcadorRojo.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorRosa = L.icon({
     iconUrl: './img/marcadorRosa.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorVioleta = L.icon({
     iconUrl: './img/marcadorVioleta.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorNaranja = L.icon({
     iconUrl: './img/marcadorNaranja.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 var marcadorAmarillo = L.icon({
     iconUrl: './img/marcadorAmarillo.png',
     iconSize: [40, 40], // size of the icon
     iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -768]
+    popupAnchor: [-1, -40]
 });
 
 /**
@@ -499,14 +500,17 @@ function mostrarSugerencias() {
     let marca = null;
     //Recoge el valor de la opción elegida en el desplegable de direcciones.
     select.addEventListener("change", function (event) {
-        
-        if (marca){
+
+        if (marca) {
             mapa.removeLayer(marca);
         }
-        
+        setTimeout(() => {
+            mapa.removeLayer(marca);
+            console.log("Marcador eliminado después de 7 segundos");
+          }, 5000);
         posDirElegida = event.target.value;
-        mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat,arrayDireccionesEncontradas[posDirElegida].lon], 11);
-        marca = L.marker([arrayDireccionesEncontradas[posDirElegida].lat,arrayDireccionesEncontradas[posDirElegida].lon]).addTo(mapa);
+        mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 11);
+        marca = L.marker([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon]).addTo(mapa);
         console.log("Valor seleccionado:", posDirElegida);
     });
 }
@@ -548,7 +552,7 @@ function guardarDireccionCategoria() {
         nomAMostrar: arrayDireccionesEncontradas[posDirElegida].name,
         importancia: arrayDireccionesEncontradas[posDirElegida].importance
     };
-    console.log("DATOS GUARDADOS: Latitud"+ datosAGuardar.latitud + "  Longitud: " + datosAGuardar.longitud)
+    console.log("DATOS GUARDADOS: Latitud" + datosAGuardar.latitud + "  Longitud: " + datosAGuardar.longitud)
     arrayDireccionesUsusario.push(datosAGuardar);
     mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 14);
     mostrarCiudadesGuardadas();
@@ -560,32 +564,32 @@ function guardarDireccionCategoria() {
     marcadoresUsuario.addLayer(nuevoMarcador);
 
     const layers = marcadoresUsuario.getLayers();
-    let zoom = calcularZoom(parseFloat(datosAGuardar.importancia) );
+    let zoom = calcularZoom(parseFloat(datosAGuardar.importancia));
     mapa.setView([datosAGuardar.latitud, datosAGuardar.longitud], zoom);
-//if (layers.length === 1) {
+    //if (layers.length === 1) {
     // Primer marcador
-    
-/*} else {
-    // Hay varios marcadores → calcular límites de todos
-    const bounds = L.latLngBounds(layers.map(layer => layer.getLatLng()));
-    mapa.fitBounds(bounds, { padding: [30, 30] });
-}*/
+
+    /*} else {
+        // Hay varios marcadores → calcular límites de todos
+        const bounds = L.latLngBounds(layers.map(layer => layer.getLatLng()));
+        mapa.fitBounds(bounds, { padding: [30, 30] });
+    }*/
 
 }
 
-    
-function calcularZoom(importancia){
+
+function calcularZoom(importancia) {
     console.log("Valor de importancia: " + importancia);
     let zoom;
-    if (importancia >= 0.3) {zoom = 15;}
-    if (importancia >= 0.5) {zoom = 13;}
-    if (importancia >= 0.7){zoom = 10;}
-    if (importancia >= 0.9){zoom = 4;}
-return zoom;
+    if (importancia >= 0.3) { zoom = 15; }
+    if (importancia >= 0.5) { zoom = 13; }
+    if (importancia >= 0.7) { zoom = 10; }
+    if (importancia >= 0.9) { zoom = 4; }
+    return zoom;
 
 }
 
-const divGuardarDatos = document.createElement("guardarDatos"); 
+const divGuardarDatos = document.createElement("guardarDatos");
 
 
 
@@ -658,7 +662,7 @@ function mostrarCiudadesGuardadas() {
 
 
 }
-const botonEliminar =document.getElementById("botonEliminar");
+const botonEliminar = document.getElementById("botonEliminar");
 
 botonEliminar.addEventListener("click", () => {
     if (confirm("¿Estás seguro de que deseas eliminar todos los marcadores personalizados?")) {
@@ -673,32 +677,32 @@ botonEliminar.addEventListener("click", () => {
 });
 
 
-const botonTerremotos= document.getElementById("botonTerremotos");
-let vista=false;
+const botonTerremotos = document.getElementById("botonTerremotos");
+let vista = false;
 botonTerremotos.addEventListener("click", () => {
-    mapa.setView([42.995607893370135,-9.407043457031252], 4);
-    
-    if (!vista){
-    mostrarLeyenda();
-    cargarTerremotos();
-    vista= true;
-    }else {
+    mapa.setView([42.995607893370135, -9.407043457031252], 4);
+
+    if (!vista) {
+        mostrarLeyenda();
+        cargarTerremotos();
+        vista = true;
+    } else {
         ocultarLeyenda();
-        
-        vista=false;
+        eliminarTerremotos();
+        vista = false;
     }
-    
- 
+
+
 
 })
 /**
  * funcion leyenda terremotos
  */
 
-function mostrarLeyenda(){
- document.getElementById("terremotos").style.display = "block";
+function mostrarLeyenda() {
+    document.getElementById("terremotos").style.display = "block";
 }
-function ocultarLeyenda(){
+function ocultarLeyenda() {
     document.getElementById("terremotos").style.display = "none";
 }
 /**
@@ -707,49 +711,49 @@ function ocultarLeyenda(){
 
 
 function cargarTerremotos() {
-  fetch('https://www.ign.es/ign/RssTools/sismologia.xml')
-    .then(response => response.text()) 
-    .then(str => {
-      const parser = new DOMParser(); 
-      const xml = parser.parseFromString(str, "application/xml");
+    fetch('https://www.ign.es/ign/RssTools/sismologia.xml')
+        .then(response => response.text())
+        .then(str => {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(str, "application/xml");
 
-      const items = xml.querySelectorAll('item'); 
+            const items = xml.querySelectorAll('item');
 
-      items.forEach(item => {
-        const lat = parseFloat(item.getElementsByTagName("geo:lat")[0]?.textContent || 0);
-const lon = parseFloat(item.getElementsByTagName("geo:long")[0]?.textContent || 0);
-        const descripcion = item.querySelector('description')?.textContent || "";
-        
-        const magMatch = descripcion.match(/magnitud\s+([\d.]+)/i);
-        let magnitud = magMatch ? parseFloat(magMatch[1]) : null;
+            items.forEach(item => {
+                const lat = parseFloat(item.getElementsByTagName("geo:lat")[0]?.textContent || 0);
+                const lon = parseFloat(item.getElementsByTagName("geo:long")[0]?.textContent || 0);
+                const descripcion = item.querySelector('description')?.textContent || "";
 
-        agregarMarcadorTerremoto(lat, lon, magnitud, );
-        console.log(`Añadiendo marcador en (${lat}, ${lon}) con magnitud ${magnitud}`);
-      });
-    })
-    .catch(error => {
-      console.error("Error cargando el XML:", error);
-    });
+                const magMatch = descripcion.match(/magnitud\s+([\d.]+)/i);
+                let magnitud = magMatch ? parseFloat(magMatch[1]) : null;
+
+                agregarMarcadorTerremoto(lat, lon, magnitud,);
+                console.log(`Añadiendo marcador en (${lat}, ${lon}) con magnitud ${magnitud}`);
+            });
+        })
+        .catch(error => {
+            console.error("Error cargando el XML:", error);
+        });
 }
 
 /**
  * agregar marcadores de los terremotos
  */
 function agregarMarcadorTerremoto(lat, lon, magnitud) {
-    
-
+    let icono;
     if (magnitud < 3) {
-         L.marker([lat, lon], { icon: marcadorVerde }).addTo(mapa);
-        
-    } else if (magnitud >= 3 && magnitud < 4) {
-         L.marker([lat, lon], { icon: marcadorNaranja }).addTo(mapa);
+        icono = marcadorVerde;
+    } else if (magnitud < 4 && magnitud >= 3) {
         icono = marcadorNaranja;
     } else if (magnitud >= 4) {
-         L.marker([lat, lon], { icon: marcadorRojo }).addTo(mapa);
-       
-    } else {
-         L.marker([lat, lon]).addTo(mapa);
+        icono = marcadorRojo;
     }
 
-    
+    const marcador = L.marker([lat, lon], { icon: icono }).addTo(mapa)
+        .bindPopup(`Magnitud: ${magnitud}`);
+    marcadoresTerremotos.push(marcador);
+}
+function eliminarTerremotos() {
+    marcadoresTerremotos.forEach(m => mapa.removeLayer(m));
+    marcadoresTerremotos = [];
 }
