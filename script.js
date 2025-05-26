@@ -504,7 +504,10 @@ function mostrarSugerencias() {
         if (marca) {
             mapa.removeLayer(marca);
         }
-
+        setTimeout(() => {
+            mapa.removeLayer(marca);
+            console.log("Marcador eliminado después de 7 segundos");
+          }, 5000);
         posDirElegida = event.target.value;
         mapa.setView([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon], 11);
         marca = L.marker([arrayDireccionesEncontradas[posDirElegida].lat, arrayDireccionesEncontradas[posDirElegida].lon]).addTo(mapa);
